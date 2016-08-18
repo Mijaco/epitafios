@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="app-persitence-unit">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.origen.spring.jpa.model.UsuarioJPA</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+         <!--LOCAL 241-->
+<!--        <properties>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=off)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-interact-clu.tbs.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=pdb1)))"/>
+            <property name="javax.persistence.jdbc.user" value="INTERACTTDP"/>
+            <property name="javax.persistence.jdbc.password" value="interacttdp99"/>
+        </properties>-->
+        
+        <!--AWS CLOUD-->
+        <properties>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="javax.persistence.jdbc.url" 
+                      value="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=off)(ADDRESS=(PROTOCOL=TCP)(HOST=bd-ma.cjyk0wzzzxvh.us-east-1.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=ORCL)))"/>
+            <property name="javax.persistence.jdbc.user" value="maymara"/>
+            <property name="javax.persistence.jdbc.password" value="THEBEST20"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+

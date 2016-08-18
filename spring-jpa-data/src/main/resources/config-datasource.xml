@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+    
+    <context:annotation-config />
+    
+    <!-- configuración para los daos que acceden por jdbc -->
+    <!--<context:component-scan base-package="com.bytesw.sgabyte.dao.jdbc" />-->
+    <!--<context:component-scan base-package="com.bytesw.sgabyte.singletons" />-->
+    
+    <!-- configuración para los daos que acceden por jpa nativo (sin uso de Entity) -->
+    <!--<context:component-scan base-package="com.bytesw.sgabyte.dao.jpa.nativo" />-->
+    
+    <!-- configuración para los daos que acceden por jpa -->
+    <jpa:repositories base-package="com.origen.spring.jpa.dao" entity-manager-factory-ref="sgabyteEntityManagerFactory"/>
+    
+    <bean id="sgabyteTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="sgabyteEntityManagerFactory" />
+    </bean>
+    
+    <!-- Enable Annotation based Declarative Transaction Management -->
+    <tx:annotation-driven transaction-manager="sgabyteTransactionManager" />
+    
+    <!-- Allows Spring @Transactional annotations -->
+    <bean id="sgabyteEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="app-persitence-unit"/>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="eclipselink.logging.level">FINEST</prop>
+                <prop key="eclipselink.weaving">false</prop>
+            </props>
+        </property>
+        <property name="jpaVendorAdapter" ref="sgaVendorAdapter"/>
+        <property name="persistenceUnitManager" ref="sgabytePersistenceUnitManager" />
+    </bean>
+    
+    <bean id="sgaVendorAdapter" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+        <property name="databasePlatform" value="${app-databasePlatform}" />
+        <property name="showSql" value="true"/>
+    </bean>
+    
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    
+</beans>
