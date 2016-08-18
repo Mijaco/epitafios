@@ -21,7 +21,7 @@
     <!--<context:component-scan base-package="com.bytesw.sgabyte.dao.jpa.nativo" />-->
     
     <!-- configuración para los daos que acceden por jpa -->
-    <jpa:repositories base-package="com.origen.spring.jpa.dao" entity-manager-factory-ref="sgabyteEntityManagerFactory"/>
+    <jpa:repositories base-package="com.bytesw.spring.jpa.dao" entity-manager-factory-ref="sgabyteEntityManagerFactory"/>
     
     <bean id="sgabyteTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="sgabyteEntityManagerFactory" />
