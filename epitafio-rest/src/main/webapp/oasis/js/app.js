@@ -34,18 +34,18 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
                             templateUrl: 'partials/mainbody.html',
                             controller: HomeController
                         });
+//                        
                         
-//                        $routeProvider.otherwise({
-//                            templateUrl: 'partials/mainbody.html',
-//                            controller: HomeController
-//                        });
+                        $routeProvider.otherwise({
+                            templateUrl: 'partials/mainbody.html',
+                            controller: HomeController
+                        });
 
 //			$locationProvider.hashPrefix('!');
                         $locationProvider.html5Mode({
                             enabled: false,
                             requireBase: false
                         });
-
 
                         /* Register error provider that shows message on failed requests or redirects to login page on
                          * unauthenticated requests */
@@ -182,10 +182,6 @@ function configuracionController($scope, NewsService,$rootScope,$cookieStore,$lo
         $location.path("/login");
     };
     
-    
-    
-    
-    
 };
 
 
@@ -219,7 +215,7 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
 
     $scope.rememberMe = true;
     $rootScope.loginVisible = true;
-
+    
 
     $scope.login = function() {
         /*$.param (Jquery) crea un objeto serializable para poder viajar en la session*/
@@ -241,12 +237,29 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
 };
 
 
-function HomeController($scope, $rootScope, $location, $cookieStore, UserService) {
+function HomeController($scope, $rootScope, $location, $cookieStore) {
 
     alert('Estamos en el home');
     $rootScope.initialized = true;
-    delete $rootScope.authToken;
-    $cookieStore.remove('authToken');
+//    $rootScope.modoConfig = false;
+//   var authToken = $cookieStore.get('authToken');
+//    
+    $scope.datosHome;// se debe traer la data del rest  
+
+    var authToken = $cookieStore.get('authToken');
+    
+    if (authToken !== undefined) {
+//        $scope.newsEntries = NewsService.query();
+//        $scope.deleteEntry = function (newsEntry) {
+//            newsEntry.$remove(function () {
+//                $scope.newsEntries = NewsService.query();
+//            });
+//        };
+    }else{
+        $location.path("/login");
+    }
+   
+   
     
 };
 
