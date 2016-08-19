@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import net.dontdrinkandroot.example.angularrestspringsecurity.entity.User;
 
 import net.dontdrinkandroot.example.angularrestspringsecurity.rest.TokenUtils;
 import net.dontdrinkandroot.example.angularrestspringsecurity.transfer.TokenTransfer;
@@ -61,30 +62,33 @@ public class UserResource
 
 
 	/**
-	 * Authenticates a user and creates an authentication token.
-	 * 
-	 * @param username
-	 *            The name of the user.
-	 * @param password
-	 *            The password of the user.
-	 * @return A transfer containing the authentication token.
-	 */
+         * 
+         * @param id es el DNI - > se deja como username porque asi lo trabaja spring
+         * @param password
+         * @param rutaInicial
+         * @return 
+         */
 	@Path("authenticate")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public TokenTransfer authenticate(@FormParam("username") String username, @FormParam("password") String password)
+	public TokenTransfer authenticate(@FormParam("id") String id, @FormParam("password") String password,@FormParam("rutaInicial") String rutaInicial)
 	{
-		UsernamePasswordAuthenticationToken authenticationToken =
-				new UsernamePasswordAuthenticationToken(username, password);
+            
+//                Long iduser = Long.parseLong(username.trim());
+		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(id, password);
 		Authentication authentication = this.authManager.authenticate(authenticationToken);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                System.out.println("Autenticando usuario : " + username + "; pass : " + password);
+                System.out.println("Autenticando usuario : " + id + "; pass : " + password + " ; rutainicial : " + rutaInicial);
 		/*
 		 * Reload user as password of authentication principal will be null after authorization and
 		 * password is needed for token generation
 		 */
-		UserDetails userDetails = this.userService.loadUserByUsername(username);
+		UserDetails userDetails = this.userService.loadUserByUsername(id);
+                
+                /*Mediante servicios de usuarios de bd*/
+                // 1.- busco por el username 12345678
+                User usuario = new User("12345678", "pass");// este usuario obtuvimos de la bd
 
 		return new TokenTransfer(TokenUtils.createToken(userDetails));
 	}

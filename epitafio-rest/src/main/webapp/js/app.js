@@ -117,8 +117,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
         $location.path("/login");
     };
     
+
     var authToken = $cookieStore.get('authToken');
-    alert('authToken: ' + authToken);
 
 
     if (authToken !== undefined) {
@@ -135,6 +135,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
     }
 
     $rootScope.initialized = true;
+    $rootScope.loginVisible = false;
 });
 
 

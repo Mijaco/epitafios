@@ -36,7 +36,7 @@
 
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#/">Home</a></li>
+                                    <li><a href="../oasis">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<!-- 
@@ -61,14 +61,16 @@
 		</div>
 	</nav>
 
-	<div class="container ng-hide" ng-show="initialized">
-            <div ng-include="'partials/mainbody.html'"></div>
-		<div class="alert alert-danger" ng-show="error">{{error}}</div>
-		<!--Se mostrara' siempre excepto cuando se trate de modificar el cuerpo-->
-                <div ng-view ng-show="!modoModificacion">
-                    
-                </div>
-	</div>
+        <div ng-include="'partials/mainbody.html'"></div>
+    
+    <div class="container ng-hide" ng-show="initialized" >
+        
+        <div class="alert alert-danger" ng-show="error">{{error}}</div>
+        <!--Se mostrara' siempre excepto cuando se trate de modificar el cuerpo-->
+        <div ng-view ng-show="!modoModificacion">
+
+        </div>
+    </div>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

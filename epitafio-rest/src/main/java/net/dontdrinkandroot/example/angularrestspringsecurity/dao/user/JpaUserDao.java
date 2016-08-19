@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class JpaUserDao extends JpaDao<User, Long> implements UserDao
+public class JpaUserDao extends JpaDao<User, String> implements UserDao
 {
 
 	public JpaUserDao()
@@ -27,11 +27,13 @@ public class JpaUserDao extends JpaDao<User, Long> implements UserDao
 
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
+	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException
 	{
-		User user = this.findByName(username);
+            
+               System.out.println("id : " + id);
+		User user = this.find(id);
 		if (null == user) {
-			throw new UsernameNotFoundException("The user with name " + username + " was not found");
+			throw new UsernameNotFoundException("usuario con " + id + " no encontrada");
 		}
 
 		return user;

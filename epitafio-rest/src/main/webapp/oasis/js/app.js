@@ -24,14 +24,19 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
                             controller: configuracionController
                         });
 
-
+                      
                         $routeProvider.when('/mainbody', {
                             templateUrl: 'partials/mainbody.html',
                             controller: mainBodyController
                         });
                         
+                          $routeProvider.when('/', {
+                            templateUrl: 'partials/mainbody.html',
+                            controller: HomeController
+                        });
+                        
 //                        $routeProvider.otherwise({
-//                            templateUrl: 'index.html',
+//                            templateUrl: 'partials/mainbody.html',
 //                            controller: HomeController
 //                        });
 
@@ -89,6 +94,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 
                 ).run(function($rootScope, $location, $cookieStore, UserService) {
 
+
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {
         delete $rootScope.error;
@@ -96,6 +102,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 
     /*asignando color por default*/
     $rootScope.colorFondo = '#efefef';
+    $rootScope.loginVisible = false;
+    $rootScope.rutaInicial = 'oasis';
     
     
     $rootScope.hasRole = function(role) {
@@ -124,7 +132,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
     };
     
     var authToken = $cookieStore.get('authToken');
-    alert('authToken: ' + authToken);
+    alert('authToken: ' + authToken + " ;  loginVisible" + $rootScope.loginVisible);
 
     var originalPath = $location.path();
     
@@ -142,6 +150,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
     }
 
     $rootScope.initialized = true;
+    
 });
 
 
@@ -209,9 +218,12 @@ function CreateController($scope, $location, NewsService) {
 function LoginController($scope, $rootScope, $location, $cookieStore, UserService) {
 
     $scope.rememberMe = true;
+    $rootScope.loginVisible = true;
+
 
     $scope.login = function() {
-        UserService.authenticate($.param({username: $scope.username, password: $scope.password}), function(authenticationResult) {
+        /*$.param (Jquery) crea un objeto serializable para poder viajar en la session*/
+        UserService.authenticate($.param({id: $scope.username, password: $scope.password, rutaInicial : $rootScope.rutaInicial} ), function(authenticationResult) {
             var authToken = authenticationResult.token;
             $rootScope.authToken = authToken;
 
@@ -233,6 +245,8 @@ function HomeController($scope, $rootScope, $location, $cookieStore, UserService
 
     alert('Estamos en el home');
     $rootScope.initialized = true;
+    delete $rootScope.authToken;
+    $cookieStore.remove('authToken');
     
 };
 

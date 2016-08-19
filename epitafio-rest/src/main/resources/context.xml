@@ -63,6 +63,7 @@
 	<bean id="userDao" class="net.dontdrinkandroot.example.angularrestspringsecurity.dao.user.JpaUserDao">
 	</bean>
 	
+        <!--Se cargan el userDao newsEntryDao y passwordEncoder con el metodo initDataBase-->
 	<bean id="dataBaseInitializer" class="net.dontdrinkandroot.example.angularrestspringsecurity.dao.DataBaseInitializer" init-method="initDataBase">
 		<constructor-arg ref="userDao" />
 		<constructor-arg ref="newsEntryDao" />
