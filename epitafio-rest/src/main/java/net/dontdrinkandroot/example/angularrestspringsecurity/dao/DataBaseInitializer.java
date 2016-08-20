@@ -41,11 +41,11 @@ public class DataBaseInitializer
 	public void initDataBase()
 	{
                 /*T raer usuario con ROL de BD real*/
-		User userUser = new User("123456789", this.passwordEncoder.encode("user"));
+		User userUser = new User("123456789-oasis", this.passwordEncoder.encode("pass1"));
 		userUser.addRole(Role.USER);
 		this.userDao.save(userUser);
 
-		User adminUser = new User("123456789", this.passwordEncoder.encode("oasis"));
+		User adminUser = new User("987654321-tumi", this.passwordEncoder.encode("pass2"));
 		adminUser.addRole(Role.USER);
 		adminUser.addRole(Role.ADMIN);
 		this.userDao.save(adminUser);

@@ -88,9 +88,12 @@ public class UserResource
                 
                 /*Mediante servicios de usuarios de bd*/
                 // 1.- busco por el username 12345678
-                User usuario = new User("12345678", "pass");// este usuario obtuvimos de la bd
-
-		return new TokenTransfer(TokenUtils.createToken(userDetails));
+//                User usuario = new User("12345678", "pass");// este usuario obtuvimos de la bd
+                
+                TokenTransfer tokenObtenido = new TokenTransfer(TokenUtils.createToken(userDetails));
+                System.out.println("userDetails : " + userDetails.toString());
+                
+		return tokenObtenido;
 	}
 
 

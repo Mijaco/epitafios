@@ -25,6 +25,7 @@ public class TokenUtils
 		tokenBuilder.append(":");
 		tokenBuilder.append(TokenUtils.computeSignature(userDetails, expires));
 
+                System.out.println("token creado : " + tokenBuilder.toString());
 		return tokenBuilder.toString();
 	}
 

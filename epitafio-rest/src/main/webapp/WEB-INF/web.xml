@@ -38,6 +38,8 @@
 	<servlet-mapping>
 		<servlet-name>RestService</servlet-name>
 		<url-pattern>/oasis/rest/*</url-pattern>
+		<url-pattern>/tumi/rest/*</url-pattern>
+		<!-- Se coloca tantos contextos tengamos (cliente)-->
 	</servlet-mapping>
 	
 	<!--

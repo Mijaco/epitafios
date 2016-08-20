@@ -103,7 +103,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
     /*asignando color por default*/
     $rootScope.colorFondo = '#efefef';
     $rootScope.loginVisible = false;
-    $rootScope.rutaInicial = 'oasis';
+    $rootScope.rutaInicial = 'tumi';
     
     
     $rootScope.hasRole = function(role) {
@@ -221,7 +221,7 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
         var id= $scope.username+"-"+$rootScope.rutaInicial;
         alert('logueando con id : '+ id);
         
-//      delete $rootScope.user;
+//        delete $rootScope.user;
         delete $rootScope.authToken;
         $cookieStore.remove('authToken');
         
