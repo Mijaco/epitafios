@@ -55,9 +55,10 @@ public class UserResource
 		if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
 			throw new WebApplicationException(401);
 		}
-		UserDetails userDetails = (UserDetails) principal;
+//		UserDetails userDetails = (UserDetails) principal;
+		User user = (User) principal;
 
-		return new UserTransfer(userDetails.getUsername(), this.createRoleMap(userDetails));
+		return new UserTransfer(user.getName(), this.createRoleMap(user));
 	}
 
 

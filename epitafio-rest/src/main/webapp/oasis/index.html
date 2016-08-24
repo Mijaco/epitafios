@@ -38,57 +38,26 @@
             <!--MENU -->
             <div class="container">
 			<header>
-				<h2>Responsive Menu</h2>
+                            <h2 class="active">Responsive Menu</h2>
 			</header>
 			
-			<div class="xs-menu-cont">
-			<a id="menutoggle"><i class="fa fa-align-justify"></i> </a>
-				<nav class="xs-menu displaynone">
-					<ul>
-						<li class="active">
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#">About</a>
-						</li>
-						<li>
-							<a href="#">Services</a>
-						</li>
-						<li>
-							<a href="#">Team</a>
-						</li>
-						<li>
-							<a href="#">Portfolio</a>
-						</li>
-						<li>
-							<a href="#">Blog</a>
-						</li>
-						<li>
-							<a href="#">Contact</a>
-						</li>
-
-					</ul>
-				</nav>
-			</div>
+			
 			<nav class="menu">
                             <ul>
 
                                 <li>
-                                    <a href="#">Services</a>
+                                    <a href="#">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">Team</a>
+                                    <a href="#">Precios</a>
                                 </li>
                                 <li>
-                                    <a href="#">Portfolio</a>
+                                    <a href="#">Ofertas</a>
                                 </li>
                                 <li>
-                                    <a href="#">Blog</a>
-
+                                    <a href="#">Contacto</a>
                                 </li>
-                                <li>
-                                    <a target="_blank" href="http://www.mywebtricks.com/">Contact</a>
-                                </li>
+                                
 
 
                                 
@@ -102,14 +71,14 @@
                                     <ul ng-show="user" class="dropdown-menu" style="background-color: #444">
                                         <li >
                                             <a  href="" ng-click="logout()"><span class="fa fa-sign-out loginSelect"></span> Logout</a>
-                                            <a  href="#/login"><span class="fa fa-sign-in loginSelect"></span>Login</a>
+                                            <!--<a  href="#/login"><span class="fa fa-sign-in loginSelect"></span>Login</a>-->
 
                                         </li>
-                                        <!--<li style="float:right"><a href="#/login"><span class="fa fa-sign-in"></span>Login</a></li>-->
                                     </ul>
-
-
-
+                                    
+                                </li>
+                                <li class="pull-right" ng-show="!user">
+                                    <a  href="#/login"><span class="fa fa-sign-in loginSelect"></span></a>
                                 </li>
                               
                             </ul>

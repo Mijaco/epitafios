@@ -25,6 +25,8 @@ public class User implements Entity, UserDetails {
 
 //	@Column(length = 80, nullable = false)// indica que es pk
     private String password;
+    
+    private String name;
 
     @Column(length = 80, nullable = true)
     private String rutaInicial;
@@ -36,6 +38,11 @@ public class User implements Entity, UserDetails {
         /* Reflection instantiation */
     }
 
+    public User(String id,String name, String passwordHash) {
+        this.id = id;
+        this.name = name;
+        this.password = passwordHash;
+    }
     public User(String id, String passwordHash) {
         this.id = id;
 //        this.name = name;
@@ -122,6 +129,12 @@ public class User implements Entity, UserDetails {
         return true;
     }
 
-  
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
 }

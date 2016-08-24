@@ -27,7 +27,7 @@ public class JpaUserDao extends JpaDao<User, String> implements UserDao
 
 	@Override
 	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException
+	public User loadUserByUsername(String id) throws UsernameNotFoundException
 	{
             
                System.out.println("id : " + id);
@@ -35,7 +35,7 @@ public class JpaUserDao extends JpaDao<User, String> implements UserDao
 		if (null == user) {
 			throw new UsernameNotFoundException("usuario con " + id + " no encontrada");
 		}
-
+//                User usuario = new US        
 		return user;
 	}
 
