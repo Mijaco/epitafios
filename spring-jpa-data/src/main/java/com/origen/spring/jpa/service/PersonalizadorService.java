@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.origen.spring.jpa.service;
 
-import com.origen.spring.jpa.model.UsuarioJPA;
+import com.origen.spring.jpa.beans.HTMLMain;
 
 /**
  *
- * @author Mijail Aymara
+ * @author JuglarM
  */
-
-
-public interface SeguridadService {
-    
-  public UsuarioJPA obtenerUsuario(String id);
+public interface PersonalizadorService {
+     public HTMLMain  obtenerHtmlPersonalizado(String distrito,String nameBussines);
 }

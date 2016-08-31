@@ -21,17 +21,17 @@
     <!--<context:component-scan base-package="com.bytesw.sgabyte.dao.jpa.nativo" />-->
     
     <!-- configuración para los daos que acceden por jpa -->
-    <jpa:repositories base-package="com.bytesw.spring.jpa.dao" entity-manager-factory-ref="sgabyteEntityManagerFactory"/>
+    <jpa:repositories base-package="com.origen.spring.jpa.dao" entity-manager-factory-ref="entityManagerFactory"/>
     
-    <bean id="sgabyteTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="sgabyteEntityManagerFactory" />
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
     
     <!-- Enable Annotation based Declarative Transaction Management -->
-    <tx:annotation-driven transaction-manager="sgabyteTransactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager" />
     
-    <!-- Allows Spring @Transactional annotations -->
-    <bean id="sgabyteEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <!-- Allows Spring @Transactional annotations DESCOMENTAR entityManagerFactory EN STANDALONE -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="app-persitence-unit"/>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
@@ -47,7 +47,8 @@
     </bean>
     
     <bean id="sgaVendorAdapter" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-        <property name="databasePlatform" value="${app-databasePlatform}" />
+        <!--<property name="databasePlatform" value="${app-databasePlatform}" />-->
+        <property name="databasePlatform" value="org.eclipse.persistence.platform.database.oracle.Oracle11Platform" />
         <property name="showSql" value="true"/>
     </bean>
     

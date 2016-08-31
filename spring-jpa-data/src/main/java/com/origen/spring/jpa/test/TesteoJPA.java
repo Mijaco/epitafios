@@ -7,6 +7,8 @@ package com.origen.spring.jpa.test;
 
 import com.origen.spring.jpa.model.UsuarioJPA;
 import com.origen.spring.jpa.service.SeguridadService;
+import com.origen.spring.jpa.singleton.PersonalizadorSingleton;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public class TesteoJPA {
 
+    @Autowired
+    private ApplicationContext appContext;
+    
     private SeguridadService seguridadService;
 
     public static void main(String[] args) {
@@ -37,7 +42,12 @@ public class TesteoJPA {
         ApplicationContext context = new ClassPathXmlApplicationContext("config-app-data.xml");// a nivel web, este contexto se carga en el Listener o serlvet-context de spring
         System.out.println("Instanciando al servicio seguridadService..");
         seguridadService = (SeguridadService) context.getBean("seguridadService");// cuando se injecta en xml
-
+        System.out.println("Cargando datos DOM");
+        
+        PersonalizadorSingleton personalizadorSingleton = (PersonalizadorSingleton) context.getBean("personalizadorSingleton");
+        String title = personalizadorSingleton.getHtmlm().getCabecera().getTitulo();
+        System.out.println("title : " + title);
+        
         UsuarioJPA user = seguridadService.obtenerUsuario(id);
         System.out.println(":::::::::: USUARIO CON ID :::::: [ " + id + "]::::");
         System.out.println(" :::::::::::::::::::::::::::::::::::::::::::::");

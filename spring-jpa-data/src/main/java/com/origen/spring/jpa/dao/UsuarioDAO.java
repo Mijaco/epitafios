@@ -6,16 +6,21 @@
 package com.origen.spring.jpa.dao;
 
 
-import com.bytesw.coreweb.dao.BaseDAO;
+//import com.bytesw.coreweb.dao.BaseDAO;//modo tbs
+//import com.origen.spring.jpa.general.BaseDaoSpringJPA;
+
+import com.origen.spring.jpa.general.BaseDAONativeJPA;
+import com.origen.spring.jpa.general.BaseDaoSpringJPA;
 import com.origen.spring.jpa.model.UsuarioJPA;
-import java.util.List;
+//import com.util.persistencia.dao.interfaz.BaseDao;
 
 /**
  *
  * @author Mijail Aymara
  *
  */
-public interface UsuarioDAO extends BaseDAO<UsuarioJPA, Long> {
+
+public interface UsuarioDAO extends BaseDaoSpringJPA<UsuarioJPA, Long> { 
 
     public UsuarioJPA findById(String id);
 

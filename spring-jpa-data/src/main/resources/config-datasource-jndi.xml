@@ -11,17 +11,19 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
     
-      <!--DATASOURCE - PARA -->
+      <!--DATASOURCE - TOMCAT -->
     <!--  <beans:bean id="appDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <beans:property name="jndiName" value="${app-jndiName}"/>
     </beans:bean>-->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    
+     <!--DATASOURCE - LOCAL -->
+<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
                   destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <property name="url" value="jdbc:oracle:thin:@192.168.21.241:1521/pdb1" />
         <property name="username" value="interacttdp" />
         <property name="password" value="interacttdp99" />
-    </bean>
+    </bean>-->
    
     
     <bean id="sgabytePersistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
