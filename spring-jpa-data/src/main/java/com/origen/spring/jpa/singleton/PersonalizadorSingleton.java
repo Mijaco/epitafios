@@ -2,6 +2,7 @@ package com.origen.spring.jpa.singleton;
 
 import com.origen.spring.jpa.beans.HTMLHeader;
 import com.origen.spring.jpa.beans.HTMLMain;
+import com.origen.spring.jpa.model.Role;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +32,8 @@ public class PersonalizadorSingleton {
     private HTMLMain htmlm;
     private List<HTMLMain> personalizaciones;
     
+    private List<Role> rolesPosibles;
+    
     public void init(){
         System.out.println("**************************************************");
         System.out.println("*********** INICIANDO PERSONALIZADOR ************");
@@ -40,10 +43,14 @@ public class PersonalizadorSingleton {
         HTMLHeader cabecera = new HTMLHeader();
         cabecera.setTitulo("OASIS");
         cabecera.setColorFondo("red");
-        cabecera.setRutaLogo("src/logo.jpg");
-        cabecera.setClassMenu("menu-default");
+        cabecera.setRutaLogo("logo/logo.jpg");
+        cabecera.setClassMenu("menu");
         htmlmain.setCabecera(cabecera);
         htmlm = htmlmain;
+        
+        
+//        List<Role> rolesPosibles = 
+        
     }
 
     public HTMLMain getHtmlm() {

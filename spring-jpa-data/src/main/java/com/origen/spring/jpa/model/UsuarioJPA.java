@@ -12,28 +12,20 @@ package com.origen.spring.jpa.model;
 
 
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "INTUSUARIO_SEG")
-public class UsuarioJPA implements Serializable { 
+public class UsuarioJPA implements Entity{ 
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "USER_ID")
@@ -84,8 +76,6 @@ public class UsuarioJPA implements Serializable {
         this.country = usuario.getCountry();
     
     }
-
-    
     
     public UsuarioJPA() {
     }
