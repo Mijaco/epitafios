@@ -1,7 +1,7 @@
 package com.epitafio.seguridad.dao.newsentry;
 
 import com.epitafio.seguridad.dao.Dao;
-import com.origen.spring.jpa.model.NewsEntry;
+import com.origen.spring.jpa.model.EpNewsentry;
 
 
 /**
@@ -9,7 +9,7 @@ import com.origen.spring.jpa.model.NewsEntry;
  * 
  * @author Philip W. Sorst <philip@sorst.net>
  */
-public interface NewsEntryDao extends Dao<NewsEntry, Long>
+public interface NewsEntryDao extends Dao<EpNewsentry, Long>
 {
 
 }

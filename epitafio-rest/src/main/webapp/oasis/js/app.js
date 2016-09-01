@@ -92,7 +92,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 
                     }]
 
-                ).run(function($rootScope, $location, $cookieStore, UserService) {
+                ).run(function($rootScope, $location, $cookieStore, UserService,ConfiguracionService) {
 
 
     /* Reset error when a new view is loaded */
@@ -104,6 +104,33 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
     $rootScope.colorFondo = '#efefef';
     $rootScope.loginVisible = false;
     $rootScope.rutaInicial = 'oasis';
+    $rootScope.distrito = 'olivos';
+    
+    /*Asignando Cabecera por Defecto*/
+//    $rootScope.HTMLMain.cabecera.titulo = "#Titulo Cabecera";
+//    $rootScope.HTMLMain.cabecera.rutaLogo = "logo/logo.jpg";
+//    $rootScope.HTMLMain.cabecera.medidaLogo = "height: 70px; margin-top: 10px; margin-left: 20px";
+//    $rootScope.HTMLMain.cabecera.colorFondo = "#333333";
+//    $rootScope.HTMLMain.cabecera.classMenu = "menu";
+   
+    $rootScope.loginVisible = false;
+    
+   
+    
+    /*Asignando Cuerpo por Defecto*/
+    
+    /*Asignando Pie por Defecto*/
+    
+    
+    /*Extraemos configuracion del Rest que ya tiene cargado desde el sigleton*/
+    ConfiguracionService.obtenerHtmlMain($.param({distrito: $rootScope.distrito, idbussines: 'oasis'} ), function(result) {
+            var HTMLMain = result;
+            $rootScope.HTMLMain = HTMLMain;
+
+            alert('HTMLMain Resultado: ' + $rootScope.HTMLMain.cabecera.titulo);
+//            alert('HTMLMain Resultado: ' + $rootScope.HTMLMain);
+            
+        });
     
     
     $rootScope.hasRole = function(role) {

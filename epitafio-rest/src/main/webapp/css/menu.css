@@ -38,7 +38,7 @@ table {
 	border-spacing: 0;
 }
 header h2 {
-	margin: 25px 10px;
+margin: 25px 10px;
 font-size: 28px;
 text-align: center;
 color: cornsilk;
@@ -48,6 +48,7 @@ color: cornsilk;
 	display: table;
 	max-width: 1140px;
 	width: 100%;
+        background-color: #fff;
 }
 .container:after, .container:before {
 	content: "" clear : both;
@@ -81,6 +82,7 @@ nav.menu {
 }
 .active{
 	background:#444 !important;
+        vertical-align: central;
 	
 }
 .displaynone{

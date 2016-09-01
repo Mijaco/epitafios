@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 
 import com.epitafio.seguridad.JsonViews;
 import com.epitafio.seguridad.dao.newsentry.NewsEntryDao;
-import com.origen.spring.jpa.model.NewsEntry;
+import com.origen.spring.jpa.model.EpNewsentry;
 import com.origen.spring.jpa.model.Role;
 
 
@@ -59,7 +59,7 @@ public class NewsEntryResource
 		} else {
 			viewWriter = this.mapper.writerWithView(JsonViews.User.class);
 		}
-		List<NewsEntry> allEntries = this.newsEntryDao.findAll();
+		List<EpNewsentry> allEntries = this.newsEntryDao.findAll();
 
 		return viewWriter.writeValueAsString(allEntries);
 	}
@@ -67,12 +67,12 @@ public class NewsEntryResource
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public NewsEntry read(@PathParam("id") Long id)
+	public EpNewsentry read(@PathParam("id") Long id)
 	{   
                 System.out.println("Leyendo new " + id);
 		this.logger.info("read(id)");
 
-		NewsEntry newsEntry = this.newsEntryDao.find(id);
+		EpNewsentry newsEntry = this.newsEntryDao.find(id);
 		if (newsEntry == null) {
 			throw new WebApplicationException(404);
 		}
@@ -82,7 +82,7 @@ public class NewsEntryResource
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public NewsEntry create(NewsEntry newsEntry)
+	public EpNewsentry create(EpNewsentry newsEntry)
 	{
 		this.logger.info("create(): " + newsEntry);
 
@@ -93,7 +93,7 @@ public class NewsEntryResource
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public NewsEntry update(@PathParam("id") Long id, NewsEntry newsEntry)
+	public EpNewsentry update(@PathParam("id") Long id, EpNewsentry newsEntry)
 	{
 		this.logger.info("update(): " + newsEntry);
 

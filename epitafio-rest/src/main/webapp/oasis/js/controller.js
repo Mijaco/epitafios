@@ -5,10 +5,7 @@ function configuracionController($scope, NewsService,$rootScope,$cookieStore,$lo
         titulo:'Oasis',
         imagen: {rutaImagen: "img-cabecera/logo.jpg",medida:'mediano'},
         colorFondo:'blue'       
-        
     };
-    
-    
 
     var authToken = $cookieStore.get('authToken');
     

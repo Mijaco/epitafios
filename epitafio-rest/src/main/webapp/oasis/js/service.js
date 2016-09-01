@@ -15,6 +15,20 @@ services.factory('UserService', function($resource) {
     );
 });
 
+services.factory('ConfiguracionService', function($resource) {
+
+    return $resource('rest/personalizacion/:action', {},
+            {
+                obtenerHtmlMain: {
+                    method: 'POST',
+                    params: {'action': 'obtenerHtmlMain'},
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }
+                
+            }
+    );
+});
+
 services.factory('NewsService', function($resource) {
 
     return $resource('rest/news/:id', {id: '@id'});

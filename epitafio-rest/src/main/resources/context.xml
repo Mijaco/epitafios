@@ -35,12 +35,12 @@
 		DATABASE SETUP 
 	 -->
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!--	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />
 		<property name="driverClassName" value="${db.driver}" />
 		<property name="url" value="${db.url}" />
-	</bean>
+	</bean>-->
 
 <!--	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

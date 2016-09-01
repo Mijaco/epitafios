@@ -15,7 +15,6 @@
  */
 package com.epitafio.web.controller;
 
-
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,8 +30,9 @@ import org.springframework.stereotype.Component;
 @Path("/personalizacion")
 public class PersonalizacionController {
 
-	@Autowired
-	private PersonalizadorService userService;
+    @Autowired
+    private PersonalizadorService userService;
+
     /**
      *
      * @param distrito
@@ -43,8 +43,25 @@ public class PersonalizacionController {
     @Path("obtenerHtmlMain")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public HTMLMain authenticate(@FormParam("distrito") String distrito, @FormParam("idbussines") String idbussines) {
-        HTMLMain main = userService.obtenerHtmlPersonalizado(distrito,idbussines);
+    public HTMLMain obtenerHtmlMain(@FormParam("distrito") String distrito, @FormParam("idbussines") String idbussines) {
+        
+        System.out.println("distrito >>>> " + distrito);
+        System.out.println("idbussines >>>> " + idbussines);
+        HTMLMain main = userService.obtenerHtmlPersonalizado(distrito, idbussines);
+        
+        try {
+             System.out.println("HTMLMain >>>> " + main);
+        if (main != null) {
+            System.out.println("getCabecera : " + main.getCabecera());
+            if (main.getCabecera() != null) {
+                System.out.println("Titulo : " + main.getCabecera().getTitulo());
+            }
+        }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
         return main;
     }
 }

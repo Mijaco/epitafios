@@ -10,11 +10,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import com.origen.spring.jpa.model.User;
+import com.origen.spring.jpa.model.EpUser;
 
 import com.epitafio.seguridad.rest.TokenUtils;
 import com.epitafio.seguridad.transfer.TokenTransfer;
 import com.epitafio.seguridad.transfer.UserTransfer;
+import com.origen.spring.jpa.serial.UserLoad;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -56,9 +57,9 @@ public class UserResource
 			throw new WebApplicationException(401);
 		}
 //		UserDetails userDetails = (UserDetails) principal;
-		User user = (User) principal;
+		UserLoad userLoad = (UserLoad) principal;
 
-		return new UserTransfer(user.getName(), this.createRoleMap(user));
+		return new UserTransfer(userLoad.getName(), this.createRoleMap(userLoad));
 	}
 
 

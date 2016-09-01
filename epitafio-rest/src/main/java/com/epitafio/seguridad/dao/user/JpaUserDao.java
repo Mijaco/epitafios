@@ -9,50 +9,73 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import com.epitafio.seguridad.dao.JpaDao;
-import com.origen.spring.jpa.model.User;
+import com.origen.spring.jpa.model.EpUser;
+import com.origen.spring.jpa.model.Role;
+import com.origen.spring.jpa.serial.UserLoad;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class JpaUserDao extends JpaDao<User, String> implements UserDao
+public class JpaUserDao extends JpaDao<EpUser, String> implements UserDao
 {
 
 	public JpaUserDao()
 	{
-		super(User.class);
+		super(EpUser.class);
 	}
 
 
 	@Override
 	@Transactional(readOnly = true)
-	public User loadUserByUsername(String id) throws UsernameNotFoundException
+	public UserLoad loadUserByUsername(String id) throws UsernameNotFoundException
 	{
             
                System.out.println("id : " + id);
-		User user = this.find(id);
+		EpUser user = this.find(id);
 		if (null == user) {
 			throw new UsernameNotFoundException("usuario con " + id + " no encontrada");
 		}
-//                User usuario = new US        
-		return user;
+                UserLoad UserLoad = new UserLoad(user);
+                UserLoad.addRole(Role.ADMIN);
+                UserLoad.addRole(Role.USER);
+                
+//                List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
+		return UserLoad;
 	}
+        
+        private List<GrantedAuthority> obtenerAutorizaciones(String cadenaRoles) {
+
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+
+		// TODO:la cadena ira separada por comas
+		setAuths.add(new SimpleGrantedAuthority(cadenaRoles));
+
+		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
+
+		return Result;
+	} 
 
 
 	@Override
 	@Transactional(readOnly = true)
-	public User findByName(String name)
+	public EpUser findByName(String name)
 	{
 		final CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-		final CriteriaQuery<User> criteriaQuery = builder.createQuery(this.entityClass);
+		final CriteriaQuery<EpUser> criteriaQuery = builder.createQuery(this.entityClass);
 
-		Root<User> root = criteriaQuery.from(this.entityClass);
+		Root<EpUser> root = criteriaQuery.from(this.entityClass);
 		Path<String> namePath = root.get("name");
 		criteriaQuery.where(builder.equal(namePath, name));
 
-		TypedQuery<User> typedQuery = this.getEntityManager().createQuery(criteriaQuery);
-		List<User> users = typedQuery.getResultList();
+		TypedQuery<EpUser> typedQuery = this.getEntityManager().createQuery(criteriaQuery);
+		List<EpUser> users = typedQuery.getResultList();
 
 		if (users.isEmpty()) {
 			return null;

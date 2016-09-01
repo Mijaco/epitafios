@@ -4,5 +4,4 @@
     <class>com.epitafio.seguridad.entity.NewsEntry</class>
     <class>com.epitafio.seguridad.entity.User</class>
   </persistence-unit>
-  
 </persistence>
