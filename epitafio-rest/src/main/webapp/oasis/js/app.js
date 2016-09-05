@@ -1,4 +1,4 @@
-angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
+angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services',"xeditable"])
         .config(
         
                 ['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
@@ -92,8 +92,11 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 
                     }]
 
-                ).run(function($rootScope, $location, $cookieStore, UserService,ConfiguracionService) {
+                ).run(function($rootScope, $location, $cookieStore, UserService,ConfiguracionService,editableOptions) {
 
+
+    /*Estilo para xeditable*/
+    editableOptions.theme = 'bs3';
 
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {

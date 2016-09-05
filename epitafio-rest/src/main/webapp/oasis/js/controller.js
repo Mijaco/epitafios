@@ -6,6 +6,24 @@ function configuracionController($scope, NewsService,$rootScope,$cookieStore,$lo
         imagen: {rutaImagen: "img-cabecera/logo.jpg",medida:'mediano'},
         colorFondo:'blue'       
     };
+    
+//    $rootScope.HTMLMain.cabecera.colorFondo = "HTMLMain";
+
+    
+     $scope.user = {
+    email: 'email@example.com',
+    tel: '123-45-67',
+    number: 29,
+    range: 10,
+    url: 'http://example.com',
+    search: 'blabla',
+    color: '#6a4415',
+    date: null,
+    time: '12:30',
+    datetime: null,
+    month: null,
+    week: null
+  };  
 
     var authToken = $cookieStore.get('authToken');
     
