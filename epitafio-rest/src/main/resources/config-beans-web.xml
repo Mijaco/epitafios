@@ -14,9 +14,6 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-	<!--
-		SPRING SETUP 
-	 -->
        
 	<!-- Load properties so we can easily change them -->
 	<context:property-placeholder location="classpath:application.properties" />
@@ -24,14 +21,12 @@
 	<!-- Enable Annotation Configuration in order to automatically scan controllers-->
 	<context:annotation-config />
 	
-	<!-- Allow @Transactional annotations for transaction management -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+<!--	 Allow @Transactional annotations for transaction management 
+	<tx:annotation-driven transaction-manager="transactionManager" />-->
 	
-	<!-- Search for Rest Resources and configure them automatically -->
+	<!-- Escaneo de paquetes de Controladores -->
 	<context:component-scan base-package="com.epitafio.seguridad.rest.resources" />
-
         <context:component-scan base-package="com.epitafio.web.controller" />
-	<!--DATABASE SETUP  -->
 
 	
 	<bean id="newsEntryDao" class="com.epitafio.seguridad.dao.newsentry.JpaNewsEntryDao">
@@ -51,44 +46,6 @@
 		<constructor-arg ref="passwordEncoder" />
 	</bean>
 
-	<!--
-		INIT REST COMPONENTS 
-	 -->
-	
-	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
-	
-	<!-- 
-		SPRING SECURITY SETUP
-	-->
-	
-	
-	
-	<security:authentication-manager id="authenticationManager">
-		<security:authentication-provider user-service-ref="userDao">
-			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
-		</security:authentication-provider>
-	</security:authentication-manager>
-	
-	<security:http
-		entry-point-ref="unauthorizedEntryPoint"
-		authentication-manager-ref="authenticationManager"
-		create-session="stateless">
-		<security:csrf disabled="true"/>
-		<security:custom-filter ref="authenticationTokenProcessingFilter" position="PRE_AUTH_FILTER" />
-		<security:intercept-url pattern="/rest/user/authenticate" access="permitAll" />
-		<security:intercept-url method="GET" pattern="/rest/news/**" access="hasRole('USER')" />
-		<security:intercept-url method="PUT" pattern="/rest/news/**" access="hasRole('ADMIN')" />
-		<security:intercept-url method="POST" pattern="/rest/news/**" access="hasRole('ADMIN')" />
-		<security:intercept-url method="DELETE" pattern="/rest/news/**" access="hasRole('ADMIN')" />
-	</security:http>
 
-	<bean id="unauthorizedEntryPoint" class="com.epitafio.seguridad.rest.UnauthorizedEntryPoint" />
-
-	<bean id="authenticationTokenProcessingFilter" class="com.epitafio.seguridad.rest.AuthenticationTokenProcessingFilter">
-		<constructor-arg ref="userDao" />
-	</bean>
-        
-        <import resource="classpath:config-app-data.xml"/>
-        
-
+        <bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
 </beans>
