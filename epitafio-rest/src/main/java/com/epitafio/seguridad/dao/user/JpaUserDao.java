@@ -9,6 +9,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import com.epitafio.seguridad.dao.JpaDao;
+import com.origen.spring.jpa.entidades.Usuario;
 import com.origen.spring.jpa.model.EpUser;
 import com.origen.spring.jpa.model.Role;
 import com.origen.spring.jpa.serial.UserLoad;
@@ -23,12 +24,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class JpaUserDao extends JpaDao<EpUser, String> implements UserDao
+public class JpaUserDao extends JpaDao<Usuario, String> implements UserDao
 {
 
 	public JpaUserDao()
 	{
-		super(EpUser.class);
+		super(Usuario.class);
 	}
 
 
@@ -38,7 +39,7 @@ public class JpaUserDao extends JpaDao<EpUser, String> implements UserDao
 	{
             
                System.out.println("id : " + id);
-		EpUser user = this.find(id);
+		Usuario user = this.find(id);
 		if (null == user) {
 			throw new UsernameNotFoundException("usuario con " + id + " no encontrada");
 		}
@@ -65,23 +66,26 @@ public class JpaUserDao extends JpaDao<EpUser, String> implements UserDao
 
 	@Override
 	@Transactional(readOnly = true)
-	public EpUser findByName(String name)
+	public Usuario findByName(String name)
 	{
-		final CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
-		final CriteriaQuery<EpUser> criteriaQuery = builder.createQuery(this.entityClass);
+//		final CriteriaBuilder builder = this.getEntityManager().getCriteriaBuilder();
+//		final CriteriaQuery<EpUser> criteriaQuery = builder.createQuery(this.entityClass);
+//
+//		Root<EpUser> root = criteriaQuery.from(this.entityClass);
+//		Path<String> namePath = root.get("name");
+//		criteriaQuery.where(builder.equal(namePath, name));
+//
+//		TypedQuery<EpUser> typedQuery = this.getEntityManager().createQuery(criteriaQuery);
+//		List<EpUser> users = typedQuery.getResultList();
+//
+//		if (users.isEmpty()) {
+//			return null;
+//		}
+//
+//		return users.iterator().next();
+            return null;
+        }
 
-		Root<EpUser> root = criteriaQuery.from(this.entityClass);
-		Path<String> namePath = root.get("name");
-		criteriaQuery.where(builder.equal(namePath, name));
-
-		TypedQuery<EpUser> typedQuery = this.getEntityManager().createQuery(criteriaQuery);
-		List<EpUser> users = typedQuery.getResultList();
-
-		if (users.isEmpty()) {
-			return null;
-		}
-
-		return users.iterator().next();
-	}
+  
 
 }

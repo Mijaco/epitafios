@@ -12,7 +12,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:/context.xml
+			classpath:/config-app-web.xml
 		</param-value>
 	</context-param>
 	<listener>

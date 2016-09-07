@@ -1,5 +1,5 @@
 
-function configuracionController($scope, NewsService,$rootScope,$cookieStore,$location) {
+function configuracionController($scope,$rootScope,$cookieStore,$location) {
     
     $rootScope.head = {
         titulo:'Oasis',
@@ -29,16 +29,12 @@ function configuracionController($scope, NewsService,$rootScope,$cookieStore,$lo
     
     alert('estamos en el configuracionController; authToken : ' + authToken);
     if (authToken !== undefined) {
-        $scope.newsEntries = NewsService.query();
-        $scope.deleteEntry = function (newsEntry) {
-            newsEntry.$remove(function () {
-                $scope.newsEntries = NewsService.query();
-            });
-        };
+//        $scope.newsEntries = NewsService.query();
+        $scope.newsEntries;
+        
     }else{
         $location.path("/login");
     }
-      
     
      $rootScope.logout = function() {
 
@@ -54,8 +50,8 @@ function configuracionController($scope, NewsService,$rootScope,$cookieStore,$lo
 
 function EditController($scope, $routeParams, $location, NewsService) {
 
-    $scope.newsEntry = NewsService.get({id: $routeParams.id});
-
+//    $scope.newsEntry = NewsService.get({id: $routeParams.id});
+    $scope.newsEntry;
     $scope.save = function() {
         $scope.newsEntry.$save(function() {
             $location.path('/');
@@ -67,7 +63,8 @@ function EditController($scope, $routeParams, $location, NewsService) {
 
 function CreateController($scope, $location, NewsService) {
 
-    $scope.newsEntry = new NewsService();
+//    $scope.newsEntry = new NewsService();
+   $scope.newsEntry;
 
     $scope.save = function() {
         $scope.newsEntry.$save(function() {

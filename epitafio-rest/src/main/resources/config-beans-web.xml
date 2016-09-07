@@ -29,8 +29,6 @@
         <context:component-scan base-package="com.epitafio.web.controller" />
 
 	
-	<bean id="newsEntryDao" class="com.epitafio.seguridad.dao.newsentry.JpaNewsEntryDao">
-	</bean>
 	
 	<bean id="userDao" class="com.epitafio.seguridad.dao.user.JpaUserDao">
 	</bean>
@@ -42,7 +40,6 @@
         <!--Se cargan el userDao newsEntryDao y passwordEncoder con el metodo initDataBase-->
 	<bean id="dataBaseInitializer" class="com.epitafio.seguridad.dao.DataBaseInitializer" init-method="initDataBase">
 		<constructor-arg ref="userDao" />
-		<constructor-arg ref="newsEntryDao" />
 		<constructor-arg ref="passwordEncoder" />
 	</bean>
 
