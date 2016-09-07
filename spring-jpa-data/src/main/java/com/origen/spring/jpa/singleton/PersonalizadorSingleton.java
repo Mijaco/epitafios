@@ -42,7 +42,7 @@ public class PersonalizadorSingleton {
         HTMLMain htmlmain = new HTMLMain();
         HTMLHeader cabecera = new HTMLHeader();
         cabecera.setTitulo("OASIS");
-        cabecera.setColorFondo("red");
+        cabecera.setColorFondo("green");
         cabecera.setRutaLogo("logo/logo.jpg");
         cabecera.setClassMenu("menu");
         htmlmain.setCabecera(cabecera);

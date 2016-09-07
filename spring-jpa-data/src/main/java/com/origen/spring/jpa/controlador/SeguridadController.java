@@ -24,12 +24,11 @@ public class SeguridadController {
     public String obtenerNombreUsuario(String idUsuario) {
         UsuarioJPA usuarioJPA = null;
         try {
-            usuarioJPA = seguridadService.obtenerUsuario(idUsuario);
+//            usuarioJPA = seguridadService.obtenerUsuario(idUsuario);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return usuarioJPA != null ? usuarioJPA.getName() : null;
-
     }
 }

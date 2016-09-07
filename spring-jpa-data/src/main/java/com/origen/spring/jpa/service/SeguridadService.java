@@ -15,5 +15,5 @@ import com.origen.spring.jpa.model.UsuarioJPA;
 
 public interface SeguridadService {
     
-  public UsuarioJPA obtenerUsuario(String id);
+//  public UsuarioJPA obtenerUsuario(String id);
 }

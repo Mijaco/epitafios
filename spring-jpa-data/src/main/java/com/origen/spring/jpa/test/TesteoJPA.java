@@ -48,10 +48,7 @@ public class TesteoJPA {
         String title = personalizadorSingleton.getHtmlm().getCabecera().getTitulo();
         System.out.println("title : " + title);
         
-        UsuarioJPA user = seguridadService.obtenerUsuario(id);
-        System.out.println(":::::::::: USUARIO CON ID :::::: [ " + id + "]::::");
-        System.out.println(" :::::::::::::::::::::::::::::::::::::::::::::");
-        System.out.println(" :::::Nombre encontrado::::[ " + user.getName() + "] ::::::::");
-        System.out.println(" :::::::::::::::::::::::::::::::::::::::::::::");
+        
+
     }
 }

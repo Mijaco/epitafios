@@ -5,7 +5,8 @@
  */
 package com.origen.spring.jpa.serial;
 
-import com.origen.spring.jpa.model.EpUser;
+
+import com.origen.spring.jpa.entidades.Usuario;
 import com.origen.spring.jpa.model.Role;
 import java.io.Serializable;
 import java.util.Collection;
@@ -26,11 +27,11 @@ public class UserLoad implements Serializable, UserDetails {
     private String rutaInicial;
     private Set<Role> roles = new HashSet<Role>();
 
-    public UserLoad(EpUser epUser) {
-        id = epUser.getId();
-        name = epUser.getName();
-        password = epUser.getPassword();
-        rutaInicial = epUser.getRutaInicial();
+    public UserLoad(Usuario usuario) {
+        id = usuario.getUsuId();
+        name = usuario.getUsuNomb();
+        password = usuario.getUsuPass();
+        rutaInicial = "olivos";
     }
 
     public UserLoad(String id, String name, String passwordHash) {
