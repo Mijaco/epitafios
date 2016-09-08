@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<documento id="01">
+	<cabecera>
+		<titulo>Titulo Default</titulo>
+		<ruta-logo>mook kim</ruta-logo>
+		<medida-logo>mkyong</medida-logo>
+		<color-fondo>100000</color-fondo>
+		<class-menu>100000</class-menu>
+	</cabecera>
+	<cuerpo>
+		<class-body>100000</class-body>
+	</cuerpo>
+</documento>
