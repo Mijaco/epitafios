@@ -5,7 +5,6 @@
  */
 package tester;
 
-import com.bytesw.util.program.Logger;
 import static com.util.json.CadenasJson.validarRecursosPorProcesar;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,14 +53,12 @@ public class TesteadorUtil {
                 
                 
             }else{
-                Logger.printDebug("", "El cadena-valor de los recursos por processar es vacio o null");
                 existenRecursosPorProcesar = false;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
             existenRecursosPorProcesar = false;
-            Logger.printDebug("", "Se ha detectado un formato erroneo para el JSON de recursos-por-procesar");
         }finally{
             recursosPorProcesarJson = null;
         }
