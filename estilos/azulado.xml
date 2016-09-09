@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<documento id="01">
+	<cabecera>
+		<titulo>Titulo Azulado</titulo>
+		<ruta-logo>logo Azulado</ruta-logo>
+		<medida-logo>Azulado</medida-logo>
+		<color-fondo>100000</color-fondo>
+		<class-menu>100000</class-menu>
+	</cabecera>
+	<cuerpo>
+		<class-body>100000</class-body>
+	</cuerpo>
+</documento>
