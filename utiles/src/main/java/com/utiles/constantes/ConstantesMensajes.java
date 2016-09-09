@@ -8,7 +8,7 @@ package com.utiles.constantes;
 
 /**
  *
- * @author UserTBS1
+ * @author Mijail
  */
 public class ConstantesMensajes {
   

@@ -2,7 +2,6 @@
 
 package com.util.cadena;
 
-import com.bytesw.util.program.Logger;
 import java.util.Locale;
 
 /**
@@ -126,14 +125,12 @@ public class CadenasPrueba {
         String regex = "\\d{9,12}";
         if (valNumeroCompleto == null) {
             mensajeValidacionTelefono = "El teléfono de la función son nulos o vacios";
-            Logger.printDebug("", mensajeValidacionTelefono);
         }
 
         try {
 
             if (!valNumeroCompleto.matches(regex)) {
                 mensajeValidacionTelefono = "El valor del telefono no cumplen con el formato";
-                Logger.printDebug("", mensajeValidacionTelefono);
             }
 
         } catch (NumberFormatException e) {
