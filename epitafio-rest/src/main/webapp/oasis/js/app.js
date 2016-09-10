@@ -1,4 +1,4 @@
-angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services',"xeditable"])
+angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exampleApp.directives',"xeditable"])
         .config(
         
                 ['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {

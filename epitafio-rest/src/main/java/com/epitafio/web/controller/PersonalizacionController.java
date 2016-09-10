@@ -15,12 +15,12 @@
  */
 package com.epitafio.web.controller;
 
+import com.epitafio.beans.html.HTMLMain;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import com.origen.spring.jpa.beans.HTMLMain;
 import com.origen.spring.jpa.service.PersonalizadorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
