@@ -23,11 +23,11 @@ import java.util.List;
  *
  * @author JuglarM
  */
-public class XMLReader {
+public class XMLReader implements ConstantesEstilos {
 
     public static void main(String argv[]) {
 
-        List<HTMLMain> listaConfig = leerConfiguracionesXML(ConstantesEstilos.DIRECTORIO_CONFIGURACIONES_WINDOWS);
+        List<HTMLMain> listaConfig = leerConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
 
         for (HTMLMain hTMLMain : listaConfig) {
             System.out.println("---------------------------------------------------------------------------------------");
@@ -47,10 +47,10 @@ public class XMLReader {
             if (archivosConfig != null) {
                 for (File configuracionXml : archivosConfig) {
                     htmlMain = leerConfiguracionXML(configuracionXml);
-                    if(htmlMain!=null){
+                    if (htmlMain != null) {
                         listaHTMLMain.add(htmlMain);
                     }
-                    
+
                 }
             }
             return listaHTMLMain;
@@ -69,26 +69,25 @@ public class XMLReader {
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
         Document doc;
-        HTMLMain htmlMain=null;
+        HTMLMain htmlMain = null;
         HTMLHeader htmlHeader;
         HTMLBody htmlBody;
         try {
-//      File fXmlFile = new File("D:\\conf\\estilos\\default.xml");
             htmlMain = new HTMLMain();
             dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
-            System.out.println("Elemento Principal:" + doc.getDocumentElement().getNodeName());
+            System.out.println("Elemento Principal: " + doc.getDocumentElement().getNodeName());
 
             System.out.println("------------EXTRAYENDO CABECERA ----------------");
-            NodeList nList = doc.getElementsByTagName("cabecera");
+            NodeList nList = doc.getElementsByTagName(CABECERA_TAG_XML_PRINCIPAL);
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
 
                 htmlHeader = new HTMLHeader();
                 htmlBody = new HTMLBody();
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                System.out.println("Elemento Cabecera :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     String titulo;
@@ -97,11 +96,11 @@ public class XMLReader {
                     String colorFondo;
                     String classMenu;
                     try {
-                         titulo = eElement.getElementsByTagName("titulo").item(0).getTextContent();
-                         rutaLogo = eElement.getElementsByTagName("ruta-logo").item(0).getTextContent();
-                         medidaLogo = eElement.getElementsByTagName("medida-logo").item(0).getTextContent();
-                         colorFondo = eElement.getElementsByTagName("color-fondo").item(0).getTextContent();
-                         classMenu = eElement.getElementsByTagName("class-menu").item(0).getTextContent();
+                        titulo = eElement.getElementsByTagName(CABECERA_TAG_XML_TITULO).item(0).getTextContent();
+                        rutaLogo = eElement.getElementsByTagName(CABECERA_TAG_XML_RUTA_LOGO).item(0).getTextContent();
+                        medidaLogo = eElement.getElementsByTagName(CABECERA_TAG_XML_MEDIDA_LOGO).item(0).getTextContent();
+                        colorFondo = eElement.getElementsByTagName(CABECERA_TAG_XML_COLOR_FONDO).item(0).getTextContent();
+                        classMenu = eElement.getElementsByTagName(CABECERA_TAG_XML_CLASS_MENU).item(0).getTextContent();
 
                         htmlHeader.setTitulo(titulo);
                         htmlHeader.setRutaLogo(rutaLogo);
@@ -126,17 +125,17 @@ public class XMLReader {
             }
 
             System.out.println("------------EXTRAYENDO BODY ----------------");
-            nList = doc.getElementsByTagName("cuerpo");
+            nList = doc.getElementsByTagName(CUERPO_TAG_XML_PRINCIPAL);
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 htmlBody = new HTMLBody();
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+                System.out.println("ElementO Cuerpo :" + nNode.getNodeName());
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     String classBody;
                     try {
 
-                        classBody = eElement.getElementsByTagName("class-body").item(0).getTextContent();
+                        classBody = eElement.getElementsByTagName(CUERPO_TAG_XML_CLASS_BODY).item(0).getTextContent();
 
                         htmlBody.setClassBody(classBody);
                         htmlMain.setCuerpo(htmlBody);
@@ -150,12 +149,12 @@ public class XMLReader {
 
                 }
             }
-            
+
             return htmlMain;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             return htmlMain;
         }
     }
