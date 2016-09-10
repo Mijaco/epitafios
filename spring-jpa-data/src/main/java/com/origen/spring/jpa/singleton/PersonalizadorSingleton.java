@@ -1,7 +1,7 @@
 package com.origen.spring.jpa.singleton;
 
-import com.origen.spring.jpa.beans.HTMLHeader;
-import com.origen.spring.jpa.beans.HTMLMain;
+import com.epitafio.beans.html.HTMLHeader;
+import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.model.Role;
 import java.util.List;
 import org.springframework.stereotype.Component;

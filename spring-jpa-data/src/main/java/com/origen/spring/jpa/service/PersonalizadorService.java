@@ -6,7 +6,7 @@
 
 package com.origen.spring.jpa.service;
 
-import com.origen.spring.jpa.beans.HTMLMain;
+import com.epitafio.beans.html.HTMLMain;
 
 /**
  *

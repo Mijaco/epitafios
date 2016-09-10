@@ -11,6 +11,7 @@
     <beans:import resource="classpath:config-datasource.xml"/>
     <beans:import resource="classpath:config-datasource-jndi.xml"/>
     <beans:import resource="classpath:config-service.xml"/>
+    <beans:import resource="classpath:config-cargador-estilos.xml"/>
     
     
 </beans:beans> 

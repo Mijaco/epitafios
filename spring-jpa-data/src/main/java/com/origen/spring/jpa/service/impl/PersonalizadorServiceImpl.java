@@ -6,7 +6,7 @@
 
 package com.origen.spring.jpa.service.impl;
 
-import com.origen.spring.jpa.beans.HTMLMain;
+import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.service.PersonalizadorService;
 import com.origen.spring.jpa.singleton.PersonalizadorSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
