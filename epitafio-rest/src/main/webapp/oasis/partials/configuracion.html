@@ -4,8 +4,18 @@
 	<a href="#!/create" class="btn btn-default" ng-show="hasRole('ROLE_ADMIN')" title="Create"><span class="fa fa-plus"></span></a>
 </div>
 <div class="page-header">
-	<h3>News</h3>
-        <input type="file" file-model="myFile"/>
+
+        <h1>Subir Logo</h1>
+        <input type = "file" file-model = "myFile"/>
+         <button ng-click = "uploadFile()">upload me</button>
+        
+<!--        <h1>singleSave</h1>
+        <form method="post" enctype="multipart/form-data" action="rest/personalizacion/salvarImagenLogo2">
+		Upload File: <input type="file" name="file">
+		<br /><br />
+		Description: <input type="text" name="desc"/>
+		<br/><br/><input type="submit" value="Upload"> 
+	</form>-->
 </div>
 
 <div ng-repeat="newsEntry in newsEntries">

@@ -97,6 +97,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
 
     /*Estilo para xeditable*/
     editableOptions.theme = 'bs3';
+    
+
 
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {

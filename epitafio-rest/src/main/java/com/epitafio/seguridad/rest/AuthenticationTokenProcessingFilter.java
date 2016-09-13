@@ -46,8 +46,13 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		}
-
-		chain.doFilter(request, response);
+                System.out.println("chain : " +  chain);
+                System.out.println("request : " +  request);
+                System.out.println("response : " +  response);
+                if(chain!=null && request!=null && response!=null){
+                    chain.doFilter(request, response);
+                }
+		
 	}
 
 	private HttpServletRequest getAsHttpRequest(ServletRequest request)

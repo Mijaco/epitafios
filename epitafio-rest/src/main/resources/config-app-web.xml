@@ -14,6 +14,9 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
+    <!-- Load properties so we can easily change them -->
+    <context:property-placeholder location="classpath:application.properties" />
+    
     <!--Iniciar spring para rest -->    
     <import resource="classpath:config-beans-web.xml"/>
     <import resource="classpath:config-security-web.xml"/>

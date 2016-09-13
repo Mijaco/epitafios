@@ -16,6 +16,15 @@ import com.epitafio.seguridad.rest.TokenUtils;
 import com.epitafio.seguridad.transfer.TokenTransfer;
 import com.epitafio.seguridad.transfer.UserTransfer;
 import com.origen.spring.jpa.serial.UserLoad;
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -42,6 +51,59 @@ public class UserResource
 	private AuthenticationManager authManager;
 
 
+         @Path("salvarImagenLogo6")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public String salvarImagenLogo2(
+            @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+        System.out.println("Creando Imagen  en me'todo cargarImagenLogo");
+        
+        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
+        saveToFile(uploadedInputStream, uploadedFileLocation);
+
+        return "Imagen Creada en Servidor";
+
+    }
+    @Path("salvarImagenLogo5")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response UploadFile2(
+            @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+        System.out.println("Creando Imagen  en UploadFile2");
+        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
+
+        // save it
+        saveToFile(uploadedInputStream, uploadedFileLocation);
+
+           String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
+ 
+        return Response.status(200).entity(output).build();
+
+    }
+     private void saveToFile(InputStream uploadedInputStream,
+            String uploadedFileLocation) {
+
+        try {
+            OutputStream out = null;
+            int read = 0;
+            byte[] bytes = new byte[1024];
+
+            out = new FileOutputStream(new File(uploadedFileLocation));
+            while ((read = uploadedInputStream.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+    }
+        
+        
 	/**
 	 * Retrieves the currently logged in user.
 	 * 

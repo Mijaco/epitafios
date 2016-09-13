@@ -1,14 +1,17 @@
 
-function configuracionController($scope, $rootScope, $cookieStore, $location) {
+function configuracionController($scope, $rootScope, $cookieStore, $location,fileUpload) {
 
-    /**/
-    $scope.upload = function (){
-        var file = $scope.myFile;
-        var uploadUrl = 'http://www.example.com/images';
-        fileUpload.uploadFileToUrl(file, uploadUrl);
-    }
+    $scope.uploadFile = function(){
+               var file = $scope.myFile;
+               
+               alert('file ' + file);
+               
+               var uploadUrl = "/fileUpload";
+               fileUpload.uploadFileToUrl(file, uploadUrl);
+            };
 
-
+  
+     
     $rootScope.head = {
         titulo: 'Oasis',
         imagen: {rutaImagen: "img-cabecera/logo.jpg", medida: 'mediano'},

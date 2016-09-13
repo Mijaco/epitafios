@@ -35,25 +35,12 @@ public class DataBaseInitializer
 	public void initDataBase()
 	{
             
-                /*T raer usuario con ROL de BD real*/
-		         Usuario usuario = new Usuario("123456789-oasis", "Mijaco",this.passwordEncoder.encode("pass1"));
-//		userUser.addRole(Role.USER);
-		this.userDao.save(usuario);
-
-		Usuario adminUser = new Usuario("987654321-tumi","Mijail", this.passwordEncoder.encode("pass2"));
-//		adminUser.addRole(Role.USER);
-//		adminUser.addRole(Role.ADMIN);
-		this.userDao.save(adminUser);
-
-//		long timestamp = System.currentTimeMillis() - (1000 * 60 * 60 * 24);
-//		for (int i = 0; i < 10; i++) {
-//                         timestamp = System.currentTimeMillis() - (1000 * 60 * 60 * 24);
-//			EpNewsentry newsEntry = new EpNewsentry();
-//			newsEntry.setContent("This is example content " + i);
-//			newsEntry.setDate(new Date(timestamp));
-//			this.newsEntryDao.save(newsEntry);
-//			timestamp += 1000 * 60 * 60;
-//		}
+            /*T raer usuario con ROL de BD real*/
+//            Usuario usuario = new Usuario("123456789-oasis", "Mijaco", this.passwordEncoder.encode("pass1"));
+//            this.userDao.save(usuario);
+//
+//            Usuario adminUser = new Usuario("987654321-tumi", "Mijail", this.passwordEncoder.encode("pass2"));
+//            this.userDao.save(adminUser);
 	}
 
 }
