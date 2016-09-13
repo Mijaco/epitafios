@@ -51,24 +51,10 @@ public class UserResource
 	private AuthenticationManager authManager;
 
 
-         @Path("salvarImagenLogo6")
+    @Path("salvarImagenLogo")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public String salvarImagenLogo2(
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail) {
-        System.out.println("Creando Imagen  en me'todo cargarImagenLogo");
-        
-        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
-        saveToFile(uploadedInputStream, uploadedFileLocation);
-
-        return "Imagen Creada en Servidor";
-
-    }
-    @Path("salvarImagenLogo5")
-    @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response UploadFile2(
+    public Response salvarImagenLogo(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
         System.out.println("Creando Imagen  en UploadFile2");
