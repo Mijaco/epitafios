@@ -15,8 +15,8 @@
         
     <bean id="cargadorEstilos" class="com.origen.spring.jpa.task.CargadorEstilos" />
 
-<!--    <task:scheduled-tasks>
-	<task:scheduled ref="cargadorEstilos" method="cargarEstilos" cron="*/10 * * * * ?" />
-   </task:scheduled-tasks>-->
+    <task:scheduled-tasks>
+	<task:scheduled ref="cargadorEstilos" method="cargarEstilos" cron="*/20 * * * * ?" />
+   </task:scheduled-tasks>
     
 </beans>
