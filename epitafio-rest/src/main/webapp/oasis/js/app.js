@@ -59,7 +59,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
 
                                     alert("status: " + status);
                                     if (status == 401) {
-                                        $location.path("/login");
+                                        $location.path("/");
                                     } else {
                                         $rootScope.error = method + " on " + url + " failed with status " + status;
                                     }

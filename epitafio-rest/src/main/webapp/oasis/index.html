@@ -65,7 +65,9 @@
 
                     <div class="container" style="background-color: #333333">
                         <!--<nav class="menu">-->
+                        
                         <div class="col-md-6 pull-left">
+                            <div><span class="btn-clipboard">Copy</span></div>
                             <!--<img src="{{HTMLMain.cabecera.rutaLogo}}" alt="logo" style="height: 40px; padding: 10px 10px 10px 10px;"/>-->
                             <img src="logo/logo.jpg" alt="logo" style="height: 40px; padding: 10px 10px 10px 10px;"/>
                         </div>
@@ -80,7 +82,7 @@
                         <ul>
 
                             <li>
-                                <a href="#">Home</a>
+                                <a href="/home">Home</a>
                             </li>
                             <li>
                                 <a href="#">Precios</a>
@@ -90,6 +92,10 @@
                             </li>
                             <li>
                                 <a href="#">Contacto</a>
+                            </li>
+                            
+                            <li ng-show="user">
+                                <a href="#/configuracion">Configurar</a>
                             </li>
 
                             <li class="dropdown pull-right" >
@@ -107,27 +113,13 @@
                             <li class="pull-right" ng-show="!user">
                                 <a  href="#/login"><span class="fa fa-sign-in loginSelect"></span></a>
                             </li>
-
                         </ul>
-
                     </nav>
-
-
-
             
                 </nav>
             </div>
             
-            <div class="row">
-                <div class="col-md-12">
-                <div class="page-header">
-                    <h1>Bienvenidos</h1>
-                </div>
-                <div class="well">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
-                </div>
-                </div>
-             </div>
+            
                 <!--CAMBIAR CLASS CONTAINER -->
 
                 <div class="container ng-hide" ng-show="initialized">
