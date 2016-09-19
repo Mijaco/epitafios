@@ -7,9 +7,9 @@
 package com.configurador.estilos.loader;
 
 import static com.configurador.estilos.constantes.ConstantesEstilos.DIRECTORIO_CONFIGURACIONES_WINDOWS;
-import static com.configurador.estilos.xml.XMLReader.leerConfiguracionesXML;
+import com.configurador.estilos.xml.XMLReader;
 import com.epitafio.beans.html.HTMLMain;
-import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class GeneradorEstilos {
     
-    public List<HTMLMain> generadoreEstilosXml(){
-        List<HTMLMain> listaEstilos = leerConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
+    public Map<String,HTMLMain> generadoreEstilosXml(){
+        Map<String,HTMLMain>  listaEstilos = XMLReader.obtenerMapaConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
         return listaEstilos;
     }
 }

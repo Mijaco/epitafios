@@ -17,7 +17,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -27,7 +29,7 @@ public class XMLReader implements ConstantesEstilos {
 
     public static void main(String argv[]) {
 
-        List<HTMLMain> listaConfig = leerConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
+        List<HTMLMain> listaConfig = obtenerListaConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
 
         for (HTMLMain hTMLMain : listaConfig) {
             System.out.println("---------------------------------------------------------------------------------------");
@@ -35,7 +37,39 @@ public class XMLReader implements ConstantesEstilos {
         }
     }
 
-    public static List<HTMLMain> leerConfiguracionesXML(String pathConfig) {
+    public static Map<String, HTMLMain> obtenerMapaConfiguracionesXML(String pathConfig) {
+
+        File[] archivosConfig;
+        HTMLMain htmlMain;
+        File directorioConfig;
+        Map<String, HTMLMain> mapasHTMLMain = new HashMap<String, HTMLMain>();
+        try {
+            directorioConfig = new File(pathConfig);
+            archivosConfig = directorioConfig.listFiles();
+            if (archivosConfig != null) {
+                for (File configuracionXml : archivosConfig) {
+                    htmlMain = leerConfiguracionXML(configuracionXml);
+                    if (htmlMain != null) {
+                        mapasHTMLMain.put(htmlMain.getNombre(), htmlMain);
+                    }
+
+                }
+            }
+            return mapasHTMLMain;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return mapasHTMLMain;
+        } finally {
+
+            archivosConfig = null;
+            htmlMain = null;
+            directorioConfig = null;
+            mapasHTMLMain = null;
+        }
+    }
+
+    public static List<HTMLMain> obtenerListaConfiguracionesXML(String pathConfig) {
 
         File[] archivosConfig;
         HTMLMain htmlMain;
@@ -69,17 +103,27 @@ public class XMLReader implements ConstantesEstilos {
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
         Document doc;
+        String nombrePlantilla;
+        String idPlantilla;
         HTMLMain htmlMain = null;
         HTMLHeader htmlHeader;
         HTMLBody htmlBody;
         try {
+            if(fXmlFile==null || fXmlFile.getName()==null){
+                return null;
+            }
+            
+            nombrePlantilla = fXmlFile.getName();
+            
             htmlMain = new HTMLMain();
             dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
             System.out.println("Elemento Principal: " + doc.getDocumentElement().getNodeName());
-
+            System.out.println("Root element :" + doc.getDocumentElement().getAttribute("id"));
+            
+            idPlantilla = doc.getDocumentElement().getAttribute("id");
             System.out.println("------------EXTRAYENDO CABECERA ----------------");
             NodeList nList = doc.getElementsByTagName(CABECERA_TAG_XML_PRINCIPAL);
             for (int temp = 0; temp < nList.getLength(); temp++) {
@@ -149,9 +193,13 @@ public class XMLReader implements ConstantesEstilos {
 
                 }
             }
+            
+            htmlMain.setNombre(nombrePlantilla);
+            htmlMain.setId(idPlantilla);
 
             return htmlMain;
         } catch (Exception e) {
+            
             e.printStackTrace();
             return null;
         } finally {
