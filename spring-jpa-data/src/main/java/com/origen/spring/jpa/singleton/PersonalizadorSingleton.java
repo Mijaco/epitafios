@@ -1,9 +1,13 @@
 package com.origen.spring.jpa.singleton;
 
+import com.configurador.estilos.loader.GeneradorEstilos;
 import com.epitafio.beans.html.HTMLHeader;
 import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.model.Role;
 import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /*
@@ -29,44 +33,52 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonalizadorSingleton {
     
-    private HTMLMain htmlm;
-    private List<HTMLMain> personalizaciones;
+    private Map<String,HTMLMain> personalizaciones;
     
-    private List<Role> rolesPosibles;
     
     public void init(){
         System.out.println("**************************************************");
         System.out.println("*********** INICIANDO PERSONALIZADOR ************");
         System.out.println("*************************************************");
-   
-        HTMLMain htmlmain = new HTMLMain();
-        HTMLHeader cabecera = new HTMLHeader();
-        cabecera.setTitulo("OASIS");
-        cabecera.setColorFondo("green");
-        cabecera.setRutaLogo("logo/logo.jpg");
-        cabecera.setClassMenu("menu");
-        htmlmain.setCabecera(cabecera);
-        htmlm = htmlmain;
+             
+        cargarEstilos();
         
-        
-//        List<Role> rolesPosibles = 
-        
+//        HTMLMain htmlmain = new HTMLMain();
+//        HTMLHeader cabecera = new HTMLHeader();
+//        cabecera.setTitulo("OASIS");
+//        cabecera.setColorFondo("green");
+//        cabecera.setRutaLogo("logo/logo.jpg");
+//        cabecera.setClassMenu("menu");
+//        htmlmain.setCabecera(cabecera);
+//        htmlm = htmlmain;
+    }
+    
+     /*Me'todo que se se ejecutara' cada n segundos*/
+    public void cargarEstilos() {
+        GeneradorEstilos generadorEstilos;
+        Map<String,HTMLMain> listaEstilos;
+        try {
+            
+            System.out.println("*********************************************************************");
+            System.out.println("************** TIME CARGADOR DE PLANTILLAS DE ESTILOS ***************");
+            System.out.println("*********************************************************************");
+            
+            generadorEstilos = new GeneradorEstilos();
+            listaEstilos = generadorEstilos.generadoreEstilosXml();
+            personalizaciones.putAll(listaEstilos);
+            
+        } catch (Exception e) {
+            System.out.println("Error al cargar Estilos");
+            e.printStackTrace();
+        }
     }
 
-    public HTMLMain getHtmlm() {
-        return htmlm;
-    }
-
-    public void setHtmlm(HTMLMain htmlm) {
-        this.htmlm = htmlm;
-    }
-
-    public List<HTMLMain> getPersonalizaciones() {
+    public Map<String, HTMLMain> getPersonalizaciones() {
         return personalizaciones;
     }
 
-    public void setPersonalizaciones(List<HTMLMain> personalizaciones) {
+    public void setPersonalizaciones(Map<String, HTMLMain> personalizaciones) {
         this.personalizaciones = personalizaciones;
     }
-    
+
 }

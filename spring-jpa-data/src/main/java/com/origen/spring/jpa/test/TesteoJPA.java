@@ -43,12 +43,6 @@ public class TesteoJPA {
         System.out.println("Instanciando al servicio seguridadService..");
         seguridadService = (SeguridadService) context.getBean("seguridadService");// cuando se injecta en xml
         System.out.println("Cargando datos DOM");
-        
-        PersonalizadorSingleton personalizadorSingleton = (PersonalizadorSingleton) context.getBean("personalizadorSingleton");
-        String title = personalizadorSingleton.getHtmlm().getCabecera().getTitulo();
-        System.out.println("title : " + title);
-        
-        
 
     }
 }
