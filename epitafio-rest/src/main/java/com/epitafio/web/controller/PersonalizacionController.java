@@ -48,7 +48,6 @@ public class PersonalizacionController {
         System.out.println("distrito >>>> " + distrito);
         System.out.println("idbussines >>>> " + idbussines);
         
-        
         HTMLMain main = userService.obtenerHtmlPersonalizado(distrito, idbussines);
 
         try {
