@@ -17,5 +17,13 @@
             <version>1.0-SNAPSHOT</version>
             <!--<scope>provided</scope>-->
         </dependency>
+        
+        <dependency>
+            <groupId>com.epitafios.v1</groupId>
+            <artifactId>utiles</artifactId>
+            
+            <version>1.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

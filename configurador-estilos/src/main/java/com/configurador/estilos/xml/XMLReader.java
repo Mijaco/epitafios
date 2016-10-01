@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.util.cadena.CadenaHelper;
 
 /**
  *
@@ -29,13 +30,15 @@ public class XMLReader implements ConstantesEstilos {
 
     public static void main(String argv[]) {
 
-        List<HTMLMain> listaConfig = obtenerListaConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
+        Map<String,HTMLMain> listaConfig = obtenerMapaConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
 
-        for (HTMLMain hTMLMain : listaConfig) {
-            System.out.println("---------------------------------------------------------------------------------------");
-            System.out.println(hTMLMain);
-        }
+        System.out.println(" > " + listaConfig);
+//        for (HTMLMain hTMLMain : listaConfig.values()) {
+//            System.out.println("---------------------------------------------------------------------------------------");
+//            System.out.println(hTMLMain);
+//        }
     }
+    
 
     public static Map<String, HTMLMain> obtenerMapaConfiguracionesXML(String pathConfig) {
 
@@ -194,6 +197,8 @@ public class XMLReader implements ConstantesEstilos {
                 }
             }
             
+            nombrePlantilla = CadenaHelper.obtenerNombreSinExtension(nombrePlantilla, ".xml");
+        
             htmlMain.setNombre(nombrePlantilla);
             htmlMain.setId(idPlantilla);
 
