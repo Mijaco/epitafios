@@ -75,7 +75,7 @@
             
         <!-- Proyectos Locales -->
         <dependency>
-            <groupId>com.epitafio.v1</groupId>
+            <groupId>com.epitafios.v1</groupId>
             <artifactId>utiles</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
