@@ -35,6 +35,24 @@ public class CadenaHelper {
 	    }
 	    return cadena;
           }
+         
+         
+    public static String obtenerNombreSinExtension(String nombreFile,String extension) throws Exception{
+        String nombre=null;
+        if(extension==null || extension.isEmpty()){
+            return nombreFile;
+        }
+        
+        if(nombreFile!=null && nombreFile.endsWith(extension)){
+            int indice = nombreFile.indexOf(extension);
+            if(indice>0){
+                nombre = nombreFile.substring(indice+1,nombreFile.length());
+            }else{
+                throw new Exception("Nombre del Archivos muy pequeño");
+            }
+        }
+        return nombre;
+    }
         
         public static void main(String[] args) {
 //            String cadena = "[]";

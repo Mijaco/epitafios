@@ -2,9 +2,13 @@ package com.epitafio.beans.html;
 
 /**
  *
- * @author JuglarM
+ * @author Mijail
  */
 public class HTMLMain {
+    
+    private String id;
+    private String nombre;
+    
     HTMLHeader cabecera;
     HTMLBody cuerpo;
     HTMLFooter pie;
@@ -32,7 +36,25 @@ public class HTMLMain {
     public void setPie(HTMLFooter pie) {
         this.pie = pie;
     }
-      @Override
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+     @Override
     public String toString() {
         StringBuilder cadena = new StringBuilder();
         cadena.append("cabecera[").append(cabecera);
