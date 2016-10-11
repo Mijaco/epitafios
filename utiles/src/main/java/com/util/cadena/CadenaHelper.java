@@ -46,7 +46,7 @@ public class CadenaHelper {
         if(nombreFile!=null && nombreFile.endsWith(extension)){
             int indice = nombreFile.indexOf(extension);
             if(indice>0){
-                nombre = nombreFile.substring(indice+1,nombreFile.length());
+                nombre = nombreFile.substring(0,indice);
             }else{
                 throw new Exception("Nombre del Archivos muy pequeño");
             }
