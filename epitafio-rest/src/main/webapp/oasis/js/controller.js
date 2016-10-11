@@ -50,7 +50,11 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
         var file = dataURItoBlob(dataURL);
         alert('file: ' + file);
         var uploadUrl = "/fileUpload";
-        fileUpload.uploadGeneratedFile(file, uploadUrl);
+
+        console.log("updateandooo...");
+        fileUpload.uploadGeneratedFile(file, uploadUrl);       
+        $scope.$digest();
+       
     };
     
     function dataURItoBlob(dataURI) {
