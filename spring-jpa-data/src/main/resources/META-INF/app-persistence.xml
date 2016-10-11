@@ -27,7 +27,7 @@
         <properties>
             <property name="eclipselink.logging.level" value="FINE"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://ec2-54-88-194-39.compute-1.amazonaws.com:3306/EPITAFIO"></property>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://ec2-54-87-223-97.compute-1.amazonaws.com:3306/EPITAFIO"></property>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value="mysql"/>
         </properties>

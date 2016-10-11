@@ -9,6 +9,7 @@ import com.configurador.estilos.loader.GeneradorEstilos;
 import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.singleton.PersonalizadorSingleton;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -26,14 +27,17 @@ public class CargadorEstilos {
     /*Metodo que se se ejecutara' cada n segundos*/
     public void cargarEstilos() {
         GeneradorEstilos generadorEstilos;
-        List<HTMLMain> listaEstilos;
+        
+        Map<String,HTMLMain> mapaEstilos;
         PersonalizadorSingleton personalizadorSingleton;
         try {
             System.out.println("*********** Timer cargador de de Estilos en el Singleton ************");
             generadorEstilos = new GeneradorEstilos();
-            listaEstilos = generadorEstilos.generadoreEstilosXml();
+            
             personalizadorSingleton = (PersonalizadorSingleton) appContext.getBean("personalizadorSingleton");
-            personalizadorSingleton.setPersonalizaciones(listaEstilos);
+            mapaEstilos = generadorEstilos.generadoreEstilosXml();
+            System.out.println("mapaEstilos: " + mapaEstilos);
+            personalizadorSingleton.setPersonalizaciones(mapaEstilos);
         } catch (Exception e) {
             System.out.println("Error al cargar Estilos");
             e.printStackTrace();

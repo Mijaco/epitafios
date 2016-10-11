@@ -9,6 +9,7 @@ package com.origen.spring.jpa.service.impl;
 import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.service.PersonalizadorService;
 import com.origen.spring.jpa.singleton.PersonalizadorSingleton;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -25,12 +26,16 @@ public class PersonalizadorServiceImpl implements PersonalizadorService{
     
     @Override
     public HTMLMain obtenerHtmlPersonalizado(String distrito,String nameBussines){
+        Map<String,HTMLMain> mapaEstilos;
         HTMLMain hTMLMain;
         PersonalizadorSingleton personalizadorSingleton = (PersonalizadorSingleton) appContext.getBean("personalizadorSingleton");
+        System.out.println("personalizadorSingleton : " + personalizadorSingleton);
         String title = personalizadorSingleton.getHtmlm().getCabecera().getTitulo();
         System.out.println("title : " + title);
+               
         
-        hTMLMain = personalizadorSingleton.getHtmlm();
+        mapaEstilos = personalizadorSingleton.getPersonalizaciones();
+        hTMLMain = mapaEstilos.get("olivos");
         
         return hTMLMain;
     }

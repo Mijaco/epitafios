@@ -4,6 +4,7 @@ import com.epitafio.beans.html.HTMLHeader;
 import com.epitafio.beans.html.HTMLMain;
 import com.origen.spring.jpa.model.Role;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 
 /*
@@ -30,7 +31,7 @@ import org.springframework.stereotype.Component;
 public class PersonalizadorSingleton {
     
     private HTMLMain htmlm;
-    private List<HTMLMain> personalizaciones;
+    private Map<String,HTMLMain> personalizaciones;
     
     private List<Role> rolesPosibles;
     
@@ -49,8 +50,6 @@ public class PersonalizadorSingleton {
         htmlm = htmlmain;
         
         
-//        List<Role> rolesPosibles = 
-        
     }
 
     public HTMLMain getHtmlm() {
@@ -61,12 +60,21 @@ public class PersonalizadorSingleton {
         this.htmlm = htmlm;
     }
 
-    public List<HTMLMain> getPersonalizaciones() {
+    public Map<String, HTMLMain> getPersonalizaciones() {
         return personalizaciones;
     }
 
-    public void setPersonalizaciones(List<HTMLMain> personalizaciones) {
+    public void setPersonalizaciones(Map<String, HTMLMain> personalizaciones) {
         this.personalizaciones = personalizaciones;
     }
+
+    public List<Role> getRolesPosibles() {
+        return rolesPosibles;
+    }
+
+    public void setRolesPosibles(List<Role> rolesPosibles) {
+        this.rolesPosibles = rolesPosibles;
+    }
+
     
 }
