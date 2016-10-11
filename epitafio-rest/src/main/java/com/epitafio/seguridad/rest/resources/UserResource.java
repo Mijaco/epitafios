@@ -24,11 +24,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,15 +50,40 @@ public class UserResource {
     @Autowired
     @Qualifier("authenticationManager")
     private AuthenticationManager authManager;
+    
+    @Autowired
+    ServletContext context; 
 
-    @Path("salvarImagenLogo")
+    @Path("salvarFile")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagenLogo(
+    public Response salvarFile(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
         System.out.println("Creando Imagen  en UploadFile2");
         String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
+
+        // save it
+        UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);
+
+        String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
+
+        return Response.status(200).entity(output).build();
+
+    }
+    
+    @Path("salvarLogoGenerado")
+    @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response salvarLogoGenerado(
+            @FormDataParam("file") InputStream uploadedInputStream,
+            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+        System.out.println("Creando Imagen  en UploadFile2");
+        
+        String uploadPath = context.getRealPath("") + File.separator + "Hola";
+        
+        System.out.println("uploadPath : " + uploadPath);
+        String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
 
         // save it
         UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);

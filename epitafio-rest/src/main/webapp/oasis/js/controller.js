@@ -1,17 +1,80 @@
 
-function configuracionController($scope, $rootScope, $cookieStore, $location,fileUpload) {
+function configuracionController($scope, $rootScope, $cookieStore, $location, fileUpload) {
+    $scope.myFunction = function() {
+        $scope.ClearCanvas();
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var tra = document.getElementById("words").value;
+        ctx.font = "50px  'Lobster', cursive";
+        ctx.textAlign = 'center';
+        var gradient = ctx.createLinearGradient(0, 0, c.width, c.height);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.2", "red");
+        gradient.addColorStop("0.3", "blue");
+        gradient.addColorStop("0.4", "magenta");
+        gradient.addColorStop("0.5", "red");
+        gradient.addColorStop("0.6", "blue");
+        gradient.addColorStop("0.7", "magenta");
+        gradient.addColorStop("0.8", "red");
+        gradient.addColorStop("1.0", "blue");
+        ctx.fillStyle = gradient;
+        ctx.fillText(tra, 150, 60);
+        
+    }
 
-    $scope.uploadFile = function(){
+
+    $scope.ClearCanvas = function() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, 200, 100);
+    }
+
+    $scope.Preview = function() {
+        var canvas = document.getElementById("myCanvas");
+        var dataUrl = canvas.toDataURL();
+
+        window.open(dataUrl, "toDataURL() image", "width=600, height=200");
+    }
+    $scope.uploadFile = function() {
                var file = $scope.myFile;
-               
-               alert('file ' + file);
-               
-               var uploadUrl = "/fileUpload";
-               fileUpload.uploadFileToUrl(file, uploadUrl);
-            };
+        alert('file: ' + file);
 
-  
-     
+        var uploadUrl = "/fileUpload";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
+    
+    $scope.uploadGeneratedLogo = function() {
+        var canvas = document.getElementById("myCanvas");
+        var dataURL = canvas.toDataURL();
+//        var dataURL = canvas.toDataURL('image/jpg', 0.5);
+        var file = dataURItoBlob(dataURL);
+        alert('file: ' + file);
+        var uploadUrl = "/fileUpload";
+        fileUpload.uploadGeneratedFile(file, uploadUrl);
+    };
+    
+    function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+
+
     $rootScope.head = {
         titulo: 'Oasis',
         imagen: {rutaImagen: "img-cabecera/logo.jpg", medida: 'mediano'},
@@ -47,7 +110,7 @@ function configuracionController($scope, $rootScope, $cookieStore, $location,fil
         $location.path("/login");
     }
 
-    $rootScope.logout = function () {
+    $rootScope.logout = function() {
 
         delete $rootScope.user;
         delete $rootScope.authToken;
@@ -55,35 +118,35 @@ function configuracionController($scope, $rootScope, $cookieStore, $location,fil
         alert('Removiendo Token queda > ' + $cookieStore.get('authToken'));
         $location.path("/login");
     };
-    
-    
-     var tabClasses;
-  
-  function initTabs() {
-    tabClasses = ["","","",""];
-  }
-  
-  $scope.getTabClass = function (tabNum) {
-    return tabClasses[tabNum];
-  };
-  
-  $scope.getTabPaneClass = function (tabNum) {
-    return "tab-pane " + tabClasses[tabNum];
-  }
-  
-  $scope.setActiveTab = function (tabNum) {
+
+
+    var tabClasses;
+
+    function initTabs() {
+        tabClasses = ["", "", "", ""];
+    }
+
+    $scope.getTabClass = function(tabNum) {
+        return tabClasses[tabNum];
+    };
+
+    $scope.getTabPaneClass = function(tabNum) {
+        return "tab-pane " + tabClasses[tabNum];
+    }
+
+    $scope.setActiveTab = function(tabNum) {
+        initTabs();
+        tabClasses[tabNum] = "active";
+    };
+
+    $scope.tab1 = "This is first section";
+    $scope.tab2 = "This is SECOND section";
+    $scope.tab3 = "This is THIRD section";
+    $scope.tab4 = "This is FOUTRH section";
+
+    //Initialize 
     initTabs();
-    tabClasses[tabNum] = "active";
-  };
-  
-  $scope.tab1 = "This is first section";
-  $scope.tab2 = "This is SECOND section";
-  $scope.tab3 = "This is THIRD section";
-  $scope.tab4 = "This is FOUTRH section";
-  
-  //Initialize 
-  initTabs();
-  $scope.setActiveTab(1);
+    $scope.setActiveTab(1);
 
 }
 ;
@@ -93,8 +156,8 @@ function EditController($scope, $routeParams, $location, NewsService) {
 
 //    $scope.newsEntry = NewsService.get({id: $routeParams.id});
     $scope.newsEntry;
-    $scope.save = function () {
-        $scope.newsEntry.$save(function () {
+    $scope.save = function() {
+        $scope.newsEntry.$save(function() {
             $location.path('/');
         });
     };
@@ -107,8 +170,8 @@ function CreateController($scope, $location, NewsService) {
 //    $scope.newsEntry = new NewsService();
     $scope.newsEntry;
 
-    $scope.save = function () {
-        $scope.newsEntry.$save(function () {
+    $scope.save = function() {
+        $scope.newsEntry.$save(function() {
             $location.path('/');
         });
     };
@@ -122,7 +185,7 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
     $rootScope.loginVisible = true;
 
 
-    $scope.login = function () {
+    $scope.login = function() {
         /*$.param (Jquery) crea un objeto serializable para poder viajar en la session*/
         var id = $scope.username + "-" + $rootScope.rutaInicial;
         alert('logueando con id : ' + id);
@@ -131,7 +194,7 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
         delete $rootScope.authToken;
         $cookieStore.remove('authToken');
 
-        UserService.authenticate($.param({id: id, password: $scope.password, rutaInicial: $rootScope.rutaInicial}), function (authenticationResult) {
+        UserService.authenticate($.param({id: id, password: $scope.password, rutaInicial: $rootScope.rutaInicial}), function(authenticationResult) {
             var authToken = authenticationResult.token;
             $rootScope.authToken = authToken;
 
@@ -140,7 +203,7 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
                 alert('rememberMe: ' + $scope.rememberMe);
                 $cookieStore.put('authToken', authToken);
             }
-            UserService.get(function (user) {
+            UserService.get(function(user) {
                 $rootScope.user = user;
                 $location.path("/configuracion");
             });
