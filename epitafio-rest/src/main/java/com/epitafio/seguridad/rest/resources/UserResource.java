@@ -80,10 +80,10 @@ public class UserResource {
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
         System.out.println("Creando Imagen  en UploadFile2");
         
-        String uploadPath = context.getRealPath("") + File.separator + "Hola";
+        String uploadedFileLocation = context.getRealPath("") + File.separator + "oasis"+File.separator+"logo"+File.separator+"logo.jpg";
         
-        System.out.println("uploadPath : " + uploadPath);
-        String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
+        System.out.println("uploadedFileLocation : " + uploadedFileLocation);
+//        String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
 
         // save it
         UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);
