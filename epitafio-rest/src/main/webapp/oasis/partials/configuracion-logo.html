@@ -1,0 +1,67 @@
+<style>
+    #canvas-logo{
+         margin:3px;
+         width:100%;
+         background:white;
+         border-style: solid;
+         border-radius: 3px;
+         height:80px;  
+    }
+</style>
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
+<link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'/>
+
+<!--<div style="background:#E5E4E2;padding:5px;margin:6px;text-align:center;font-family: 'Alegreya SC', serif;font-size:15px;height:95%"><h1 style="font-size:15px;margin:4px">-->
+
+<!--</h1>-->
+
+<div class="row">
+    
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
+                <!--<input type="text" id="words" class="form-control" ng-keyup="myFunction()" placeholder="Ingrese un nombre del logo.."></input>-->
+                <button>Hola</button>
+            </div>
+            <div class="col-md-3">
+<!--            <button type="button" ng-click = "uploadGeneratedLogo()"  class="btn btn-success"><span class="glyphicon glyphicon-cloud-upload"></span>
+                Subir</button>-->
+                <button>Hola2</button>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <canvas id="canvas-logo"  ></canvas>
+            </div>
+        </div>
+        
+    </div>
+         <div class="col-md-6">
+
+              <h1>Subir Logo</h1>
+              <input type = "file" file-model = "myFile"/>
+              <button ng-click = "uploadFile()">upload me</button>
+    </div>
+   
+</div>
+<!--</div>-->
+
+<script>
+
+
+function ClearCanvas() {
+var c=document.getElementById("canvas-logo");
+var ctx=c.getContext("2d");
+ctx.clearRect(0,0,200,100);
+}
+
+function Preview() {
+var canvas  = document.getElementById("canvas-logo");
+var dataUrl = canvas.toDataURL();
+
+window.open(dataUrl, "toDataURL() image", "width=600, height=200");
+}
+</script>
+ 
+    

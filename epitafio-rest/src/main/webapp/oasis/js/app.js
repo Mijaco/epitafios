@@ -128,8 +128,6 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
     
     
     /*Extraemos configuracion del Rest que ya tiene cargado desde el sigleton*/
-    
-    alert('obtenerHtmlMain: ');
 
     ConfiguracionService.obtenerHtmlMain($.param({distrito: $rootScope.distrito, idbussines: 'oasis'} ), function(result) {
             var HTMLMain = result;

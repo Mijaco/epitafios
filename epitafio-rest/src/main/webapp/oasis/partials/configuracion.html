@@ -1,21 +1,4 @@
-<!--<div class="pull-right">
-	<a href="#!/create" class="btn btn-default" ng-show="hasRole('ROLE_ADMIN')" title="Create"><span class="fa fa-plus"></span></a>
-</div>-->
 <style>
-#words {
-    width: 160px;
-    height: 30px;
-    background: white;
-    padding-left:3px;
-    -webkit-transition: width 2s;
-    transition: width 2s;
-    font-family: 'Alegreya SC', serif;
-    border:none;
-}
- 
-#words:hover {
-    width: 100px;
-}
 
 #button , #button1 , #button2 {
 background:#6AE8D3;
@@ -79,68 +62,8 @@ color:#3A3D40;
         </div>
         
         <div ng-class="getTabPaneClass(3)" id="collateral">     
-          {{tab3}}
-         
-
-   
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
-<link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'/>
-<center>
-<div style="background:#E5E4E2;padding:5px;margin:6px;text-align:center;font-family: 'Alegreya SC', serif;font-size:15px;height:95%"><h1 style="font-size:15px;margin:4px">
-Logo Generator
-</h1>
-<hr style="width:70%">
-
-<div class="row">
-<div class="col-sm-6">
-    <input type="text" id="words" ng-keyup="myFunction()" placeholder=" Type your text Here..."></input>
-<!--<button id="button" onclick="myFunction()">Vista Previa</button>-->
-<button id="button" ng-click = "uploadGeneratedLogo()">Establecer como logo</button>
-<br>
-<canvas id="myCanvas" width="300" height="80" style="margin:10px;padding-bottom:20px;background:white"></canvas>
-</div>
-
-</div>
-</div>
-
-<script>
-function myFunction() {
-    alert("HOLA KEY");
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-var tra = document.getElementById("words").value;
-ctx.font="50px  'Lobster', cursive";
-ctx.textAlign = 'center';
-var gradient=ctx.createLinearGradient(0,0,c.width,c.height);
-gradient.addColorStop("0","magenta");
-gradient.addColorStop("0.2","red");
-gradient.addColorStop("0.3","blue");
-gradient.addColorStop("0.4","magenta");
-gradient.addColorStop("0.5","red");
-gradient.addColorStop("0.6","blue");
-gradient.addColorStop("0.7","magenta");
-gradient.addColorStop("0.8","red");
-gradient.addColorStop("1.0","blue");
-ctx.fillStyle=gradient;
-ctx.fillText(tra, 150, 60);
-}
-
-function ClearCanvas() {
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-ctx.clearRect(0,0,200,100);
-}
-
-function Preview() {
-var canvas  = document.getElementById("myCanvas");
-var dataUrl = canvas.toDataURL();
-
-window.open(dataUrl, "toDataURL() image", "width=600, height=200");
-}
-</script>
- 
-    
-    
+  
+             <div ng-include="'partials/configuracion-logo.html'"></div>
     
     
 
@@ -148,21 +71,7 @@ window.open(dataUrl, "toDataURL() image", "width=600, height=200");
         
         <div ng-class="getTabPaneClass(4)" id="rating">     
           {{tab4}}
-          <div class="page-header">
-
-              <h1>Subir Logo</h1>
-              <input type = "file" file-model = "myFile"/>
-              <button ng-click = "uploadFile()">upload me</button>
-              
-
-<!--                      <h1>singleSave</h1>
-                      <form method="post" enctype="multipart/form-data" action="/oasis/rest/user/salvarImagenLogo">
-                              Upload File: <input type="file" name="file">
-                              <br /><br />
-                              Description: <input type="text" name="desc"/>
-                              <br/><br/><input type="submit" value="Upload"> 
-                      </form>-->
-          </div>
+         
         </div>      
       </div>
   </div>

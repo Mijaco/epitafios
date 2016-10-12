@@ -299,6 +299,10 @@ margin-left: 5px;
     
 
 /*Fin menu principal*/
+
+
+/*Configuracion html*/
+
 .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -317,8 +321,9 @@ margin-left: 5px;
   }
   .borde-configuracion{
       border:1px; 
-      border-color: blue; 
+      border-color: #ccc; 
       border-style: solid;
+      border-radius: 2px 2px 2px 2px;
   }
   
   

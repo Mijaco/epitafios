@@ -1,8 +1,12 @@
 
 function configuracionController($scope, $rootScope, $cookieStore, $location, fileUpload) {
+    $scope.cambiarModoUpload = function() {
+        modoUpload = !modoUpload;
+    };
+    
     $scope.myFunction = function() {
         $scope.ClearCanvas();
-        var c = document.getElementById("myCanvas");
+        var c = document.getElementById("canvas-logo");
         var ctx = c.getContext("2d");
         var tra = document.getElementById("words").value;
         ctx.font = "50px  'Lobster', cursive";
@@ -24,13 +28,13 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
 
 
     $scope.ClearCanvas = function() {
-        var c = document.getElementById("myCanvas");
+        var c = document.getElementById("canvas-logo");
         var ctx = c.getContext("2d");
         ctx.clearRect(0, 0, 200, 100);
     }
 
     $scope.Preview = function() {
-        var canvas = document.getElementById("myCanvas");
+        var canvas = document.getElementById("canvas-logo");
         var dataUrl = canvas.toDataURL();
 
         window.open(dataUrl, "toDataURL() image", "width=600, height=200");
@@ -44,7 +48,7 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
     };
     
     $scope.uploadGeneratedLogo = function() {
-        var canvas = document.getElementById("myCanvas");
+        var canvas = document.getElementById("canvas-logo");
         var dataURL = canvas.toDataURL();
 //        var dataURL = canvas.toDataURL('image/jpg', 0.5);
         var file = dataURItoBlob(dataURL);
