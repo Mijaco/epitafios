@@ -11,18 +11,20 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
         var tra = document.getElementById("words").value;
         ctx.font = "50px  'Lobster', cursive";
         ctx.textAlign = 'center';
-        var gradient = ctx.createLinearGradient(0, 0, c.width, c.height);
+        
+        alert("c.width " + c.width);
+        var gradient = ctx.createLinearGradient(0, 0, 150, 60);
         gradient.addColorStop("0", "magenta");
         gradient.addColorStop("0.2", "red");
-        gradient.addColorStop("0.3", "blue");
+        gradient.addColorStop("0.3", "black");
         gradient.addColorStop("0.4", "magenta");
         gradient.addColorStop("0.5", "red");
-        gradient.addColorStop("0.6", "blue");
+        gradient.addColorStop("0.6", "black");
         gradient.addColorStop("0.7", "magenta");
         gradient.addColorStop("0.8", "red");
-        gradient.addColorStop("1.0", "blue");
+        gradient.addColorStop("1.0", "black");
         ctx.fillStyle = gradient;
-        ctx.fillText(tra, 150, 60);
+        ctx.fillText(tra, 100, 60);
         
     }
 
