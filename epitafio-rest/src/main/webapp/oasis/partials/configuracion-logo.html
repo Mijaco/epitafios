@@ -1,11 +1,15 @@
 <style>
     #canvas-logo{
-         margin:3px;
-         width:100%;
-         background:white;
-         border-style: solid;
-         border-radius: 3px;
-         height:80px;  
+        margin:3px;
+        width:100%;
+        background:white;
+        border: 0.5px;
+        height:100px;
+        border: 1px;
+        border-color: #ccc;
+        border-style: solid;
+        border-radius: 2px 2px 2px 2px;
+        padding-top: 20px
     }
 </style>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
@@ -19,14 +23,12 @@
     
     <div class="col-md-6">
         <div class="row">
-            <div class="col-md-6">
-                <!--<input type="text" id="words" class="form-control" ng-keyup="myFunction()" placeholder="Ingrese un nombre del logo.."></input>-->
-                <button>Hola</button>
+            <div class="col-xs-8" style="text-align: center;">
+                <input type="text" id="words" class="form-control"  ng-keyup="myFunction()" placeholder="Ingrese un nombre del logo.."></input>
             </div>
-            <div class="col-md-3">
-<!--            <button type="button" ng-click = "uploadGeneratedLogo()"  class="btn btn-success"><span class="glyphicon glyphicon-cloud-upload"></span>
-                Subir</button>-->
-                <button>Hola2</button>
+            <div class="col-xs-4" style="text-align: center;">
+                <button type="button" ng-click = "uploadGeneratedLogo()"  class="btn btn-success" style="width:100%;"><span class="glyphicon glyphicon-cloud-upload"></span>
+                Subir</button>
             </div>
         </div>
         
@@ -45,7 +47,6 @@
     </div>
    
 </div>
-<!--</div>-->
 
 <script>
 
