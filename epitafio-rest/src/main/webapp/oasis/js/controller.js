@@ -9,10 +9,9 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
         var c = document.getElementById("canvas-logo");
         var ctx = c.getContext("2d");
         var tra = document.getElementById("words").value;
-        ctx.font = "50px  'Lobster', cursive";
+        ctx.font = "110px  'Lobster', cursive";
         ctx.textAlign = 'center';
         
-        alert("c.width " + c.width);
         var gradient = ctx.createLinearGradient(0, 0, 150, 60);
         gradient.addColorStop("0", "magenta");
         gradient.addColorStop("0.2", "red");
@@ -24,7 +23,8 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
         gradient.addColorStop("0.8", "red");
         gradient.addColorStop("1.0", "black");
         ctx.fillStyle = gradient;
-        ctx.fillText(tra, 100, 60);
+        ctx.fillText(tra, 150, 90);
+        ctx.textAlign = "center";    
         
     }
 
@@ -32,15 +32,15 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
     $scope.ClearCanvas = function() {
         var c = document.getElementById("canvas-logo");
         var ctx = c.getContext("2d");
-        ctx.clearRect(0, 0, 200, 100);
+        ctx.clearRect(0, 0, c.width, c.height);
     }
 
-    $scope.Preview = function() {
-        var canvas = document.getElementById("canvas-logo");
-        var dataUrl = canvas.toDataURL();
-
-        window.open(dataUrl, "toDataURL() image", "width=600, height=200");
-    }
+//    $scope.Preview = function() {
+//        var canvas = document.getElementById("canvas-logo");
+//        var dataUrl = canvas.toDataURL();
+//
+//        window.open(dataUrl, "toDataURL() image", "width=600, height=200");
+//    }
     $scope.uploadFile = function() {
                var file = $scope.myFile;
         alert('file: ' + file);
