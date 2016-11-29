@@ -1,5 +1,5 @@
 
-function configuracionController($scope, $rootScope, $cookieStore, $location, fileUpload) {
+function configuracionController($scope, $rootScope, $cookieStore, $location,fileUpload) {
     $scope.cambiarModoUpload = function() {
         modoUpload = !modoUpload;
     };
@@ -41,13 +41,16 @@ function configuracionController($scope, $rootScope, $cookieStore, $location, fi
 //
 //        window.open(dataUrl, "toDataURL() image", "width=600, height=200");
 //    }
-    $scope.uploadFile = function() {
-               var file = $scope.myFile;
-        alert('file: ' + file);
+   
 
-        var uploadUrl = "/fileUpload";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
-    };
+    $scope.uploadFile = function(){
+               var file = $scope.myFile;
+               
+               alert('file ' + file);
+               
+               var uploadUrl = "/fileUpload";
+               fileUpload.uploadFileToUrl(file, uploadUrl);
+            };
     
     $scope.uploadGeneratedLogo = function() {
         var canvas = document.getElementById("canvas-logo");

@@ -61,15 +61,12 @@ public class UserResource {
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
         System.out.println("Creando Imagen  en UploadFile2");
-        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
-
+//        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
+        String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
         // save it
         UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);
-
         String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
-
         return Response.status(200).entity(output).build();
-
     }
     
     @Path("salvarLogoGenerado")
