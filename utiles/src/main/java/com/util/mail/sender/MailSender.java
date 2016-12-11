@@ -52,7 +52,7 @@ public class MailSender {
         // cargamos el servidor de correo;
         servidorEmail = new ServidorEmail();
         servidorEmail.setCorreoIdentificador("casio_soe@hotmail.com");
-        servidorEmail.setPassword("@NDREI20");
+        servidorEmail.setPassword("PASSWORD");
 
     }
 
