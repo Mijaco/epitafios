@@ -62,15 +62,15 @@ color:#3A3D40;
         </div>
         
         <div ng-class="getTabPaneClass(3)" id="collateral">     
-             <div ng-include="'partials/configuracion-logo.html'"></div>
+             <h1>Subir Logo</h1>
+              <input type = "file" file-model = "myFile"/>
+              <button ng-click = "uploadFile()">upload me</button>
         </div>
         
         <div ng-class="getTabPaneClass(4)" id="rating">     
-          {{tab4}}
-                    <h1>Subir Logo</h1>
-              <input type = "file" file-model = "myFile"/>
-              <button ng-click = "uploadFile()">upload me</button>
-         
+          {{tab4}}          
+          <div ng-include="'partials/configuracion-logo.html'"></div>
+                    
         </div>      
       </div>
   </div>
