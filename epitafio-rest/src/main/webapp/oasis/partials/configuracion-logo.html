@@ -1,6 +1,5 @@
 <style>
     #canvas-logo{
-        margin:3px;
         width:100%;
         background:white;
         border: 0.5px;
@@ -12,6 +11,7 @@
         padding-top: 20px;
         padding-top: 30px;
         padding-left: 30px;
+        margin-top: 5px;
     }
 </style>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'/>
@@ -23,7 +23,13 @@
 
 <div class="row">
     
+    <div class="col-md-3">.</div>
     <div class="col-md-6">
+         <fieldset>
+  <legend>Personalia:</legend>
+  <div class="borde-secciones-submenu">
+        
+        
         <div class="row">
             <div class="col-xs-8" style="text-align: center;">
                 <input type="text" id="words" class="form-control"  ng-keyup="myFunction()" placeholder="Ingrese un nombre del logo.."></input>
@@ -34,19 +40,21 @@
             </div>
         </div>
         
+        
         <div class="row">
             <div class="col-md-12">
                 <canvas id="canvas-logo"  ></canvas>
             </div>
         </div>
-        
+      </div>
+       </fieldset> 
     </div>
-         <div class="col-md-6">
+<!--         <div class="col-md-6">
 
               <h1>Subir Logo</h1>
               <input type = "file" file-model = "myFile"/>
               <button ng-click = "uploadFile()">upload me</button>
-    </div>
+    </div>-->
    
 </div>
 

@@ -13,14 +13,14 @@ function configuracionController($scope, $rootScope, $cookieStore, $location,fil
         ctx.textAlign = 'center';
         
         var gradient = ctx.createLinearGradient(0, 0, 150, 60);
-        gradient.addColorStop("0", "magenta");
-        gradient.addColorStop("0.2", "red");
+        gradient.addColorStop("0", "black");
+        gradient.addColorStop("0.2", "blue");
         gradient.addColorStop("0.3", "black");
-        gradient.addColorStop("0.4", "magenta");
-        gradient.addColorStop("0.5", "red");
+        gradient.addColorStop("0.4", "black");
+        gradient.addColorStop("0.5", "white");
         gradient.addColorStop("0.6", "black");
-        gradient.addColorStop("0.7", "magenta");
-        gradient.addColorStop("0.8", "red");
+        gradient.addColorStop("0.7", "black");
+        gradient.addColorStop("0.8", "white");
         gradient.addColorStop("1.0", "black");
         ctx.fillStyle = gradient;
         ctx.fillText(tra, 150, 90);
