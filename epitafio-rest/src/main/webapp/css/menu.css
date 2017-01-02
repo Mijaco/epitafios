@@ -49,9 +49,12 @@ color: cornsilk;
 	max-width: 1140px;
 	width: 100%;
         background-color: #fff;
+        border-radius: 4px 4px 4px 4px;
+        
 }
 .container:after, .container:before {
 	content: "" clear : both;
+        
 }
 nav.menu {
 	background: coral;

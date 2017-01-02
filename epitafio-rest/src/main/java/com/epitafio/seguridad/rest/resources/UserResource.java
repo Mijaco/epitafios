@@ -19,11 +19,16 @@ import com.origen.spring.jpa.serial.UserLoad;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 import com.utiles.files.UtilFiles;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Iterator;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Response;
@@ -53,18 +58,19 @@ public class UserResource {
     
     @Autowired
     ServletContext context; 
-
+    
     @Path("salvarFile")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarFile(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
-        System.out.println("Creando Imagen  en UploadFile2");
+        System.out.println("Creando Imagen  en salvarFile");
 //        String uploadedFileLocation = "C:\\mytemp\\" + fileDetail.getFileName();
         String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
-        // save it
+// save it
         UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);
+//        detectarExtensionArchivo(uploadedInputStream);
         String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
         return Response.status(200).entity(output).build();
     }
