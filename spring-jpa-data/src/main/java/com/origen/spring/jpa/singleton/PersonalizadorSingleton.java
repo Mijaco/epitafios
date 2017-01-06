@@ -51,6 +51,14 @@ public class PersonalizadorSingleton {
         
         
     }
+    
+    public void cambiarModoLogoPersonalizado(boolean logoDefault){
+        if(htmlm!=null){
+            if(htmlm.getCabecera()!=null){
+                htmlm.getCabecera().setLogoPersonalizado(logoDefault);
+            }
+        }
+    }
 
     public HTMLMain getHtmlm() {
         return htmlm;

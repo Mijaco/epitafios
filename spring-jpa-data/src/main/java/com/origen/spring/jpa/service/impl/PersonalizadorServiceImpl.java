@@ -31,11 +31,18 @@ public class PersonalizadorServiceImpl implements PersonalizadorService{
         PersonalizadorSingleton personalizadorSingleton = (PersonalizadorSingleton) appContext.getBean("personalizadorSingleton");
         System.out.println("personalizadorSingleton : " + personalizadorSingleton);
         String title = personalizadorSingleton.getHtmlm().getCabecera().getTitulo();
-        System.out.println("title : " + title);
+        
                
         
         mapaEstilos = personalizadorSingleton.getPersonalizaciones();
+        System.out.println("mapaEstilos : " + mapaEstilos);
+        
         hTMLMain = mapaEstilos.get("olivos");
+        if(hTMLMain!=null){
+            if(hTMLMain.getCabecera().isLogoPersonalizado()){
+                hTMLMain.getCabecera().setRutaLogo("logo/logo-personalizado.jpg");
+            };
+        }
         
         return hTMLMain;
     }
