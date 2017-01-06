@@ -43,9 +43,9 @@ public class EmailGenerator {
             message.setSubject(asunto);
             message.setText(mensaje);
 
-            MimeMultipart partesCorreo = new MimeMultipart();
-            partesCorreo.addBodyPart(adjunto);
-            message.setContent(partesCorreo);
+//            MimeMultipart partesCorreo = new MimeMultipart();
+//            partesCorreo.addBodyPart(adjunto);
+//            message.setContent(partesCorreo);
 
         } catch (Exception e) {
 

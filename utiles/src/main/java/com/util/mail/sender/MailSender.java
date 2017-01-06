@@ -52,11 +52,31 @@ public class MailSender {
         // cargamos el servidor de correo;
         servidorEmail = new ServidorEmail();
         servidorEmail.setCorreoIdentificador("casio_soe@hotmail.com");
-        servidorEmail.setPassword("PASSWORD");
+        servidorEmail.setPassword("*******");
+        
 
     }
+    
+    public static void main(String[] args) {
+        
+        
+        List<Email> correos = new ArrayList<Email>();
+        
+        Email email = new Email();
+        
+        email.setCorreoIdentificador("casio.soe@gmail.com");
+        email.setDireccionFisica("Mz 35 Lote 18");
+        email.setMensaje("HOLA CTM");
+        email.setNombreUsuario("casio");
+        email.setAsunto("Mensaje de asunto");
+        
+        correos.add(email);
+        MailSender mailSender = new MailSender();
+                
+        mailSender.enviarEmail(correos);
+    }
 
-    public void enviarEmail(List<Email> correos) {
+    public  void enviarEmail(List<Email> correos) {
 
         try {
             for (Email correo : correos) {
@@ -189,34 +209,34 @@ public class MailSender {
         this.props = props;
     }
 
-    public static void main(String[] args) {
-        MailSender mailSender = new MailSender();
-
-         try {
-        Email email = new Email();
-             email.setNombreUsuario("MA");
-             email.setMensaje("Mensaje de pruebita");
-             email.setAsunto("HOLA MA2");
-             email.setCorreoIdentificador("casio.soe@gmail.com");
-
-             BodyPart adjunto = new MimeBodyPart();
-
-             adjunto.setDataHandler(new DataHandler(new FileDataSource("D:\\iMAGE\\bad.jpg")));
-             adjunto.setFileName("imagen.jpg");
-
-             email.setCorreoIdentificador("casio.soe@gmail.com");
-             email.setAdjunto(adjunto);
-
-             List<Email> listaCorreos = new ArrayList<Email>();
-             listaCorreos.add(email);
-
-             mailSender.enviarEmail(listaCorreos);
-         } catch (Exception e) {
-             e.printStackTrace();
-        }
+//    public static void main(String[] args) {
+//        MailSender mailSender = new MailSender();
+//
+//         try {
+//             Email email = new Email();
+//             email.setNombreUsuario("MA");
+//             email.setMensaje("Mensaje de pruebita");
+//             email.setAsunto("HOLA MA2");
+//             email.setCorreoIdentificador("casio.soe@gmail.com");
+//
+//             BodyPart adjunto = new MimeBodyPart();
+//
+//             adjunto.setDataHandler(new DataHandler(new FileDataSource("D:\\iMAGE\\bad.jpg")));
+//             adjunto.setFileName("imagen.jpg");
+//
+//             email.setCorreoIdentificador("casio.soe@gmail.com");
+//             email.setAdjunto(adjunto);
+//
+//             List<Email> listaCorreos = new ArrayList<Email>();
+//             listaCorreos.add(email);
+//
+//             mailSender.enviarEmail(listaCorreos);
+//         } catch (Exception e) {
+//             e.printStackTrace();
+//        }
 
         
 
     }
 
-}
+
