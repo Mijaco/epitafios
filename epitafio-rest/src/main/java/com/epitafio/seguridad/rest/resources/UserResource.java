@@ -16,6 +16,7 @@ import com.epitafio.seguridad.rest.TokenUtils;
 import com.epitafio.seguridad.transfer.TokenTransfer;
 import com.epitafio.seguridad.transfer.UserTransfer;
 import com.origen.spring.jpa.serial.UserLoad;
+import com.origen.spring.jpa.singleton.PersonalizadorSingleton;
 import com.sun.jersey.core.header.FormDataContentDisposition;
 import com.sun.jersey.multipart.FormDataParam;
 import com.utiles.files.UtilFiles;
@@ -59,6 +60,9 @@ public class UserResource {
     @Autowired
     ServletContext context; 
     
+    @Autowired
+    private ApplicationContext appContext;
+    
     @Path("salvarFile")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -83,14 +87,16 @@ public class UserResource {
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
         System.out.println("Creando Imagen  en UploadFile2");
         
-        String uploadedFileLocation = context.getRealPath("") + File.separator + "oasis"+File.separator+"logo"+File.separator+"logo.jpg";
+        String uploadedFileLocation = context.getRealPath("") + File.separator + "oasis"+File.separator+"logo"+File.separator+"logo-personalizado.jpg";
         
         System.out.println("uploadedFileLocation : " + uploadedFileLocation);
 //        String uploadedFileLocation = "C:\\mytemp\\" + "logo.jpg";
 
         // save it
         UtilFiles.salvarInputStreamEnArchivo(uploadedInputStream, uploadedFileLocation);
-
+        
+        PersonalizadorSingleton personalizadorSingleton = (PersonalizadorSingleton) appContext.getBean("personalizadorSingleton");
+        personalizadorSingleton.cambiarModoLogoPersonalizado(true);
         String output = "File uploaded via Jersey based RESTFul Webservice to: " + uploadedFileLocation;
 
         return Response.status(200).entity(output).build();

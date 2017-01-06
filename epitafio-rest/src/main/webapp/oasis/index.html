@@ -11,6 +11,8 @@
         <link href="../css/xeditable.css" rel="stylesheet">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/sb-admin-2.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
 
 
@@ -62,8 +64,9 @@
 
 <div style="height: 80px; width: 100%; margin-top: 10px ;background-color:{{HTMLMain.cabecera.colorFondo}}; border-radius: 4px 4px 0px 0px">
     <div class="row">
-                        <div class="col-md-6 pull-left">                            
-                            <img src="{{HTMLMain.cabecera.rutaLogo}}" alt="logo" style="height: 80px; padding: 20px 10px 0px 50px;"/>
+                        <div class="col-md-6">           
+                                    <i class="fa fa-hotel fa-5x" style="margin-left:30px"></i>
+                                    <img src="{{HTMLMain.cabecera.rutaLogo}}" alt="logo" style="height: 80px; padding: 20px 10px 0px 50px;" ng-show="{{HTMLMain.cabecera.logoPersonalizado}}"/>
                         </div>
                         <div class="col-md-6 hidden-xs hidden-md" style="font-size: 20px;color: #ffffff; padding-top: 20px">
                             {{HTMLMain.cabecera.titulo}}
