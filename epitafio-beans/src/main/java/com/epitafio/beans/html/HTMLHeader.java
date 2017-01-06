@@ -10,11 +10,20 @@ public class HTMLHeader {
     private String medidaLogo;
     private String colorFondo;
     private String classMenu;
+    private boolean logoPersonalizado=false;// nace con logo default de bootstrap
 
     public String getTitulo() {
         return titulo;
     }
 
+    public boolean isLogoPersonalizado() {
+        return logoPersonalizado;
+    }
+
+    public void setLogoPersonalizado(boolean logoPersonalizado) {
+        this.logoPersonalizado = logoPersonalizado;
+    }
+    
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
