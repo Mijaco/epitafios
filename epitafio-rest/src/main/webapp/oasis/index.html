@@ -3,15 +3,32 @@
 <html ng-app="exampleApp">
     <head>
         <title>Angular Rest SpringSecurity Example</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="../css/bootstrap.font.min.css" rel="stylesheet"/>
-        <link href="../css/custom.css" rel="stylesheet">
-        <link href="../css/menu.css" rel="stylesheet">
+         <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet"> 
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  
+  <!-- responsive template body -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700' rel='stylesheet' type='text/css'>
+  <!--<link href="css/font-awesome.min.css" rel="stylesheet">-->
+  <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">  
+  <link href="css/flexslider.css" rel="stylesheet">
+  <link href="css/templatemo-style.css" rel="stylesheet">
+  <!-- responsive template body -->
+        
+        <!--<link href="../css/bootstrap.min.css" rel="stylesheet"/>-->
+        <!--<link href="../css/bootstrap.font.min.css" rel="stylesheet"/>-->
+        <!--<link href="../css/custom.css" rel="stylesheet">-->
+        <!--<link href="../css/menu.css" rel="stylesheet">-->
 
-        <link href="../css/xeditable.css" rel="stylesheet">
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/sb-admin-2.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!--<link href="../css/xeditable.css" rel="stylesheet">-->
+        <!--<link href="../css/bootstrap.min.css" rel="stylesheet">-->
+        <!--<link href="../css/sb-admin-2.css" rel="stylesheet">-->
+        <!--<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
 
 
 
@@ -55,79 +72,75 @@
     </head>
     <body style="padding-top:10px; background-color: #cccccc;">
 
-        <div class="container">
-            <!--            <div class="loader" ng-hide="initialized">
-                            <p>Loading</p>
-                            <p><span class="fa fa-spinner fa-spin"></span></p>
-                        </div>-->
+              <!--.preloader-->
+  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+  <!--/.preloader-->
 
+  <header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image: url(images/slider/1.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">BIENVENIDO <span>Oxygen</span></h1>
+            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/2.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Say Hello to <span>Oxygen</span></h1>
+            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/3.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">We are <span>Creative</span></h1>
+            <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+          </div>
+        </div>
+      </div>
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
 
-<div style="height: 80px; width: 100%; margin-top: 10px ;background-color:{{HTMLMain.cabecera.colorFondo}}; border-radius: 4px 4px 0px 0px">
-    <div class="row">
-                        <div class="col-md-6">           
-                                    <i class="fa fa-hotel fa-5x" style="margin-left:30px"></i>
-                                    <img src="{{HTMLMain.cabecera.rutaLogo}}" alt="logo" style="height: 80px; padding: 20px 10px 0px 50px;" ng-show="{{HTMLMain.cabecera.logoPersonalizado}}"/>
-                        </div>
-                        <div class="col-md-6 hidden-xs hidden-md" style="font-size: 20px;color: #ffffff; padding-top: 20px">
-                            {{HTMLMain.cabecera.titulo}}
-                        </div>
-     </div>
-</div>
-                <nav class="navbar navbar-inverse " style="border-radius: 0px 0px 4px 4px">
-                
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Home</a>
-                    </div>
+      <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            
-                            <li>
-                                <a href="#">Precios</a>
-                            </li>
-                            <li>
-                                <a href="#">Ofertas</a>
-                            </li>
-                            <li>
-                                <a href="#">Contacto</a>
-                            </li>
-                            <li ng-show="user">
-                                <a href="#/configuracion">Configurar</a>
-                            </li>
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                                
-                                <a ng-show="user" href="" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    {{user.name}} <b class="caret"></b>
-                                </a>
-                                <ul ng-show="user" class="dropdown-menu" style="background-color: #444">
-                                    <li >
-                                        <a  href="" ng-click="logout()"><span class="fa fa-sign-out loginSelect"></span> Logout</a>
+    </div><!--/#home-slider-->
+    <div class="main-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <h1><img class="img-responsive" src="img/logo.png" alt="logo"></h1>
+          </a>                    
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">                 
+            <li class="scroll active"><a href="#home">HOME</a></li>
+            <li class="scroll"><a href="#services">SERVICIO</a></li> 
+            <li class="scroll"><a href="#about-us">OFERTAS</a></li>                     
+            <li class="scroll"><a href="#portfolio">CONTACTO</a></li>
+            <li class="scroll"><a href="#">CONFIGURAR</a></li>
+            
+            <li ng-show="user">
+                                        <a  href="" ng-click="logout()"><span class="fa fa-sign-out loginSelect"></span>Salir</a>
                                         <!--<a  href="#/login"><span class="fa fa-sign-in loginSelect"></span>Login</a>-->
                                     </li>
-                                </ul> 
-                                
-                            </li>
-                             <li class="pull-right" ng-show="!user">
-                                <a  href="#/login"><span class="fa fa-sign-in loginSelect"></span></a>
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
+             
+                 
+          </ul>
+        </div>
+      </div>
+    </div><!--/#main-nav-->
+  </header><!--/#home-->
+  
+                  
             
                 <!--CAMBIAR CLASS CONTAINER -->
 
@@ -135,12 +148,10 @@
                     <div class="alert alert-danger" ng-show="error">{{error}}</div>
                     <div ng-view>
                     </div>
-                </div>
-           
-            
-        </div>
+                </div>           
+        
 
-        <script type="text/javascript" src="../js/jquery-2.2.2.js"></script>
+        <!--<script type="text/javascript" src="../js/jquery-2.2.2.js"></script>-->
         <script src="../js/bootstrap-3.3.6.js" ></script>
         <script type="text/javascript" src="../js/angular-1.4.9.js"></script>
         <script type="text/javascript" src="../js/angular-resource-1.4.9.js"></script>
@@ -156,6 +167,18 @@
         <script src="../js/sb-admin-2.js"></script>
         <!--<script src="../js/angular-min-1.0.8.js"></script>-->
         <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>-->
+            
+        
+          <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="js/jquery.inview.min.js"></script>
+  <script type="text/javascript" src="js/wow.min.js"></script>
+  <script type="text/javascript" src="js/mousescroll.js"></script>
+  <script type="text/javascript" src="js/smoothscroll.js"></script>
+  <script type="text/javascript" src="js/jquery.countTo.js"></script>
+  <script type="text/javascript" src="js/lightbox.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 
     </body>
 </html>
