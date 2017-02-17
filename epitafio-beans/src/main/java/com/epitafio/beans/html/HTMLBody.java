@@ -16,12 +16,17 @@
 
 package com.epitafio.beans.html;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author JuglarM
  */
 public class HTMLBody {
     private String classBody;
+    
+    private BigDecimal longitud;
+    private BigDecimal latitud;
 
     public String getClassBody() {
         return classBody;
@@ -30,11 +35,31 @@ public class HTMLBody {
     public void setClassBody(String classBody) {
         this.classBody = classBody;
     }
+
+    public BigDecimal getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(BigDecimal longitud) {
+        this.longitud = longitud;
+    }
+
+    public BigDecimal getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
+    }
+    
+    
     
     @Override
     public String toString() {
         StringBuilder cadena = new StringBuilder();
         cadena.append("classBody:").append(classBody);
+        cadena.append(";longitud:").append(longitud);
+        cadena.append(";latitud:").append(latitud);
 
         return cadena.toString(); //To change body of generated methods, choose Tools | Templates.
     }

@@ -133,8 +133,10 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
             var HTMLMain = result;
             $rootScope.HTMLMain = HTMLMain;
 
-            alert('HTMLMain Resultado: ' + $rootScope.HTMLMain.cabecera.titulo);
-//            alert('HTMLMain Resultado: ' + $rootScope.HTMLMain);
+            //alert('HTMLMain Resultado: ' + $rootScope.HTMLMain.cabecera.titulo);
+            alert('HTMLMain Resultado: ' + $rootScope.HTMLMain.cuerpo.longitud);
+            //alert('HTMLMain Resultado: ' + $rootScope.HTMLMain.cuerpo.latitud);
+//            alert('HTMLMain Resultado: ' + angular.toJSON($rootScope.HTMLMain));
             
         });
     

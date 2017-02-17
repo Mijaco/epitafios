@@ -24,6 +24,7 @@ public interface ConstantesEstilos {
     
     String CUERPO_TAG_XML_PRINCIPAL = "cuerpo";
     String CUERPO_TAG_XML_CLASS_BODY = "class-body";
+    String CUERPO_TAG_XML_COORDENADAS = "coordenadas";
     
     
 }

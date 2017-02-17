@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.util.cadena.CadenaHelper;
+import java.math.BigDecimal;
 
 /**
  *
@@ -30,9 +31,19 @@ public class XMLReader implements ConstantesEstilos {
 
     public static void main(String argv[]) {
 
+        
+        try {
         Map<String,HTMLMain> listaConfig = obtenerMapaConfiguracionesXML(DIRECTORIO_CONFIGURACIONES_WINDOWS);
-
+        BigDecimal bd = new BigDecimal("-11.9700542");   
+        System.out.println("bd : " + bd);
         System.out.println(" > " + listaConfig);
+        } catch (Exception e) {
+            e.printStackTrace();
+                    
+        }
+        
+        
+        
 //        for (HTMLMain hTMLMain : listaConfig.values()) {
 //            System.out.println("---------------------------------------------------------------------------------------");
 //            System.out.println(hTMLMain);
@@ -142,6 +153,7 @@ public class XMLReader implements ConstantesEstilos {
                     String medidaLogo;
                     String colorFondo;
                     String classMenu;
+                    String coordenadas;
                     try {
                         titulo = eElement.getElementsByTagName(CABECERA_TAG_XML_TITULO).item(0).getTextContent();
                         rutaLogo = eElement.getElementsByTagName(CABECERA_TAG_XML_RUTA_LOGO).item(0).getTextContent();
@@ -156,6 +168,8 @@ public class XMLReader implements ConstantesEstilos {
                         htmlHeader.setClassMenu(classMenu);
 
                         htmlMain.setCabecera(htmlHeader);
+                        
+                        htmlBody.setClassBody(classMenu);
                     } catch (Exception e) {
                         e.printStackTrace();
                         return null;
@@ -180,11 +194,21 @@ public class XMLReader implements ConstantesEstilos {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
                     String classBody;
+                    String[] coordenadas;
+                    BigDecimal longitud;
+                    BigDecimal latitud;
                     try {
 
                         classBody = eElement.getElementsByTagName(CUERPO_TAG_XML_CLASS_BODY).item(0).getTextContent();
-
+                        coordenadas = eElement.getElementsByTagName(CUERPO_TAG_XML_COORDENADAS).item(0).getTextContent().split(",");
+                        System.out.println("coordenadas[0]: " + coordenadas[0]);
+                        latitud = new BigDecimal(coordenadas[0]);
+                        longitud = new BigDecimal(coordenadas[1]);
+                        
                         htmlBody.setClassBody(classBody);
+                        htmlBody.setLatitud(latitud);
+                        htmlBody.setLongitud(longitud);
+                        
                         htmlMain.setCuerpo(htmlBody);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -192,6 +216,10 @@ public class XMLReader implements ConstantesEstilos {
                     } finally {
                         classBody = null;
                         eElement = null;
+                        coordenadas = null;
+                        longitud = null;
+                        latitud = null;
+                    
                     }
 
                 }
