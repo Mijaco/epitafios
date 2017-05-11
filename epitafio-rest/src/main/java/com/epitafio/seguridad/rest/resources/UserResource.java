@@ -45,6 +45,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Component
 @Path("/user")
@@ -62,6 +66,35 @@ public class UserResource {
     
     @Autowired
     private ApplicationContext appContext;
+    
+    
+    @Path("saveAllEditables")
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    public boolean saveAllEditables(@RequestBody String htmlForm) {
+        System.out.println("htmlForm : " + htmlForm);
+        return true;
+    }
+    
+//    @RequestMapping(value = "/saveAllEditables" , method = RequestMethod.POST)
+//    public @ResponseBody boolean saveAllEditables(@RequestBody String htmlForm) {
+//        System.out.println("htmlFormmm : " + htmlForm);
+//        return true;
+//    }
+    
+    @RequestMapping(value = "prueba" , method = RequestMethod.GET)
+    public @ResponseBody String prueba(@RequestBody String form) {
+        System.out.println("form: " + form);
+    //do business logic
+    return "";
+    }
+    
+    @RequestMapping(value = "prueba2" , method = RequestMethod.GET)
+    public @ResponseBody String prueba2() {
+        System.out.println("form2 vacio ");
+    //do business logic
+    return "";
+    }
     
     @Path("salvarFile")
     @POST

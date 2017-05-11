@@ -34,19 +34,23 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
                             templateUrl: 'partials/mainbody.html',
                             controller: HomeController
                         });
-//                        
+                        
+                         $routeProvider.when('/oasis', {
+                            templateUrl: 'partials/mainbody.html',
+                            controller: HomeController
+                        });
                         
                         $routeProvider.otherwise({
                             templateUrl: 'partials/mainbody.html',
                             controller: HomeController
                         });
 
-//			$locationProvider.hashPrefix('!');
+			//$locationProvider.hashPrefix('!');
                         $locationProvider.html5Mode({
                             enabled: false,
                             requireBase: false
                         });
-
+                        
                         /* Register error provider that shows message on failed requests or redirects to login page on
                          * unauthenticated requests */
                         $httpProvider.interceptors.push(function($q, $rootScope, $location) {
@@ -92,7 +96,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
 
                     }]
 
-                ).run(function($rootScope, $location, $cookieStore, UserService,ConfiguracionService,editableOptions) {
+                ).run(function($rootScope, $location, $cookieStore, UserService,configuracionService,editableOptions) {
 
 
     /*Estilo para xeditable*/
@@ -129,7 +133,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services','exa
     
     /*Extraemos configuracion del Rest que ya tiene cargado desde el sigleton*/
 
-    ConfiguracionService.obtenerHtmlMain($.param({distrito: $rootScope.distrito, idbussines: 'oasis'} ), function(result) {
+    configuracionService.obtenerHtmlMain($.param({distrito: $rootScope.distrito, idbussines: 'oasis'} ), function(result) {
             var HTMLMain = result;
             $rootScope.HTMLMain = HTMLMain;
 

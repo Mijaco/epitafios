@@ -1,5 +1,5 @@
 
-function configuracionController($scope, $rootScope, $cookieStore, $location,fileUpload) {
+function configuracionController($scope, $rootScope, $cookieStore, $location,fileUpload,configuracionService) {
     $scope.cambiarModoUpload = function() {
         modoUpload = !modoUpload;
     };
@@ -33,7 +33,7 @@ function configuracionController($scope, $rootScope, $cookieStore, $location,fil
         var c = document.getElementById("canvas-logo");
         var ctx = c.getContext("2d");
         ctx.clearRect(0, 0, c.width, c.height);
-    }
+    };
 
 //    $scope.Preview = function() {
 //        var canvas = document.getElementById("canvas-logo");
@@ -42,15 +42,20 @@ function configuracionController($scope, $rootScope, $cookieStore, $location,fil
 //        window.open(dataUrl, "toDataURL() image", "width=600, height=200");
 //    }
    
+   
+    $scope.saveAllEditables = function(){
+        
+        var dataToSave = JSON.stringify($rootScope.HTMLMain);
+        alert("salvando todo: " + dataToSave);
+        fileUpload.saveAllEditables(dataToSave);
+    };
 
     $scope.uploadFile = function(){
                var file = $scope.myFile;
-               
                alert('file ' + file);
-               
                var uploadUrl = "/fileUpload";
                fileUpload.uploadFileToUrl(file, uploadUrl);
-            };
+    };
     
     $scope.uploadGeneratedLogo = function() {
         var canvas = document.getElementById("canvas-logo");
@@ -230,6 +235,22 @@ function HomeController($scope, $rootScope, $location, $cookieStore) {
 
     alert('Estamos en el home');
     $rootScope.initialized = true;
+    
+     $scope.user = {
+    email: 'email@example.com',
+    tel: '123-45-67',
+    number: 29,
+    range: 10,
+    url: 'http://example.com',
+    search: 'blabla',
+    color: '#6a4415',
+    date: null,
+    time: '12:30',
+    datetime: null,
+    month: null,
+    week: null
+  };
+  
 //    
 //$('body').noisy({
 //    intensity: 0.2,

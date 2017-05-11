@@ -13,7 +13,7 @@ services.factory('UserService', function($resource) {
     );
 });
 
-services.factory('ConfiguracionService', function($resource) {
+services.factory('configuracionService', function($resource) {
 
     return $resource('rest/personalizacion/:action', {},
             {
@@ -25,7 +25,8 @@ services.factory('ConfiguracionService', function($resource) {
 
             }
     );
-});
+}
+);
 
 services.factory('NewsService', function($resource) {
 
@@ -47,6 +48,14 @@ services.service('fileUpload', ['$http', function($http) {
             var fd = new FormData();
             fd.append('file', file);
             $http.post("/oasis/rest/user/salvarLogoGenerado", fd, {transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function() {
+            }).error(function() {
+            });
+        }
+        
+        this.saveAllEditables = function(htmlForm) {
+            var fd = new FormData();
+            fd.append('htmlForm', htmlForm);   
+            $http.post("/oasis/rest/user/saveAllEditables", htmlForm, {transformRequest: angular.identity, headers: {'Content-Type': undefined}}).success(function() {
             }).error(function() {
             });
         }

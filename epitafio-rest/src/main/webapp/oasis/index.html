@@ -3,6 +3,7 @@
 <html ng-app="exampleApp">
     <head>
         <title>Angular Rest SpringSecurity Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
          <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/animate.min.css" rel="stylesheet"> 
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -18,6 +19,10 @@
   <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">  
   <link href="css/flexslider.css" rel="stylesheet">
   <link href="css/templatemo-style.css" rel="stylesheet">
+  
+  <!-- Angular-xeditable -->
+    <link href="css/xeditable.css" rel="stylesheet">
+    
   <!-- responsive template body -->
         
         <!--<link href="../css/bootstrap.min.css" rel="stylesheet"/>-->
@@ -116,9 +121,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
-            <h1><img class="img-responsive" src="img/logo.png" alt="logo"></h1>
-          </a>                    
+          <div class="navbar-brand row" href="index.html">
+          
+        <h1 class="col-md-6 col-sm-6 col-xs-6"><img class="img-responsive" src="img/logo.png" alt="logo"></h1>
+        <h1 class="col-md-6 col-sm-6 col-xs-6">
+            <a href="#" editable-text="HTMLMain.cabecera.classMenu"  style="color:red">{{ HTMLMain.cabecera.classMenu || 'empty' }}</a>
+        </h1>
+
+ 
+        </div>                  
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">                 
@@ -171,7 +182,7 @@
         
           <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
   <script type="text/javascript" src="js/jquery.inview.min.js"></script>
   <script type="text/javascript" src="js/wow.min.js"></script>
   <script type="text/javascript" src="js/mousescroll.js"></script>

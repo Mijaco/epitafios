@@ -31,6 +31,8 @@
 		<security:csrf disabled="true"/>
 		<security:custom-filter ref="authenticationTokenProcessingFilter" position="PRE_AUTH_FILTER" />
 		<security:intercept-url pattern="/rest/user/authenticate" access="permitAll" />
+                <security:intercept-url pattern="/rest/user/saveAllEditables" access="hasRole('USER','ADMIN')" />
+                
 		
 		<security:intercept-url method="GET" pattern="/rest/personalizacion/**" access="permitAll" />
 		<security:intercept-url method="POST" pattern="/rest/personalizacion/**" access="permitAll" />

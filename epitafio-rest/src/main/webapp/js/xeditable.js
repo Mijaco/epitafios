@@ -933,6 +933,8 @@ angular.module('xeditable').factory('editableController',
     };
 
     self.save = function() {
+      console.log("$scope.$parent: " + angular.toJson($scope.$parent));
+      console.log("self.scope.$data: " + self.scope.$data);
       valueGetter.assign($scope.$parent,
           self.useCopy ? angular.copy(self.scope.$data) : self.scope.$data);
 
@@ -1415,13 +1417,16 @@ angular.module('xeditable').factory('editableFormController',
     $save: function() {
       // write model for each editable
       angular.forEach(this.$editables, function(editable) {
+        console.log("salvando log 1");
         editable.save();
       });
 
       //call onaftersave of self and children
       var pc = editablePromiseCollection();
+      console.log("pcc: " + angular.toJson(pc));
       pc.when(this.$onaftersave());
       angular.forEach(this.$editables, function(editable) {
+        console.log("editable.onaftersave(): "+ editable.onaftersave());
         pc.when(editable.onaftersave());
       });
 
@@ -2300,8 +2305,8 @@ angular.module('xeditable').factory('editableThemes', function() {
   var themes = {
     //default
     'default': {
-      formTpl:      '<form class="editable-wrap"></form>',
-      noformTpl:    '<span class="editable-wrap"></span>',
+      formTpl:      '<form class="editable-wrap" style="position:absolute; z-index:1;"></form>',
+      noformTpl:    '<span class="editable-wrap" style="position:absolute; z-index:1;"></span>',
       controlsTpl:  '<span class="editable-controls"></span>',
       inputTpl:     '',
       errorTpl:     '<div class="editable-error" data-ng-if="$error" data-ng-bind="$error"></div>',
@@ -2312,8 +2317,8 @@ angular.module('xeditable').factory('editableThemes', function() {
 
     //bs2
     'bs2': {
-      formTpl:     '<form class="form-inline editable-wrap" role="form"></form>',
-      noformTpl:   '<span class="editable-wrap"></span>',
+      formTpl:     '<form class="form-inline editable-wrap" style="position:absolute; z-index:1;" role="form"></form>',
+      noformTpl:   '<span class="editable-wrap" style="position:absolute; z-index:1;"></span>',
       controlsTpl: '<div class="editable-controls controls control-group" ng-class="{\'error\': $error}"></div>',
       inputTpl:    '',
       errorTpl:    '<div class="editable-error help-block" data-ng-if="$error" data-ng-bind="$error"></div>',
@@ -2327,8 +2332,8 @@ angular.module('xeditable').factory('editableThemes', function() {
 
     //bs3
     'bs3': {
-      formTpl:     '<form class="form-inline editable-wrap" role="form"></form>',
-      noformTpl:   '<span class="editable-wrap"></span>',
+      formTpl:     '<form class="form-inline editable-wrap" style="position:absolute; z-index:1;" role="form"></form>',
+      noformTpl:   '<span class="editable-wrap" style="position:absolute; z-index:1;"></span>',
       controlsTpl: '<div class="editable-controls form-group" ng-class="{\'has-error\': $error}"></div>',
       inputTpl:    '',
       errorTpl:    '<div class="editable-error help-block" data-ng-if="$error" data-ng-bind="$error"></div>',
@@ -2385,8 +2390,8 @@ angular.module('xeditable').factory('editableThemes', function() {
     
     //semantic-ui
     'semantic': {
-      formTpl:     '<form class="editable-wrap ui form" ng-class="{\'error\': $error}" role="form"></form>',
-      noformTpl:   '<span class="editable-wrap"></span>',
+      formTpl:     '<form class="editable-wrap ui form" style="position:absolute; z-index:1;" ng-class="{\'error\': $error}" role="form"></form>',
+      noformTpl:   '<span class="editable-wrap" style="position:absolute; z-index:1;"></span>',
       controlsTpl: '<div class="editable-controls ui fluid input" ng-class="{\'error\': $error}"></div>',
       inputTpl:    '',
       errorTpl:    '<div class="editable-error ui error message" data-ng-if="$error" data-ng-bind="$error"></div>',
