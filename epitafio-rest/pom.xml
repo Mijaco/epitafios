@@ -6,7 +6,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.org.springframework.security>4.0.4.RELEASE</version.org.springframework.security>
+        <version.org.springframework.security>5.2.10.RELEASE</version.org.springframework.security>
         <version.org.springframework>4.2.5.RELEASE</version.org.springframework>
         <version.com.sun.jersey.contribs>1.19.2</version.com.sun.jersey.contribs>
         <version.org.hibernate>4.2.21.Final</version.org.hibernate>
